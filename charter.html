@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<title>The Kingmaker Charter</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,300..800&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Spline+Sans+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --ink: #171c30; --muted: #565f7d; --faint: #8a92ad;
+    --line: #dcdfeb; --cobalt: #2447e0; --gold: #b57b12;
+    --gold-soft: rgba(181, 123, 18, 0.1); --cobalt-soft: rgba(36, 71, 224, 0.07);
+    --display: "Bricolage Grotesque", "Avenir Next", "Helvetica Neue", sans-serif;
+    --body: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --mono: "Spline Sans Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0a0e1e; --surface: #121732; --ink: #e8ecfa; --muted: #9aa5c9; --faint: #66719a;
+      --line: #262e52; --cobalt: #6d87ff; --gold: #f0b03f;
+      --gold-soft: rgba(240, 176, 63, 0.1); --cobalt-soft: rgba(109, 135, 255, 0.08);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0e1e; --surface: #121732; --ink: #e8ecfa; --muted: #9aa5c9; --faint: #66719a;
+    --line: #262e52; --cobalt: #6d87ff; --gold: #f0b03f;
+    --gold-soft: rgba(240, 176, 63, 0.1); --cobalt-soft: rgba(109, 135, 255, 0.08);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.68; -webkit-font-smoothing: antialiased; }
+  .page { max-width: 760px; margin: 0 auto; padding: clamp(28px, 6vw, 72px) clamp(18px, 4vw, 40px) 80px; }
+
+  .masthead { display: flex; align-items: center; gap: 12px; margin-bottom: 34px; }
+  .masthead .brand { font-family: var(--display); font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; font-size: 0.9rem; }
+  .masthead .doc { margin-left: auto; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); text-align: right; }
+
+  h1 { font-family: var(--display); font-size: clamp(2rem, 5vw, 2.9rem); font-weight: 680; line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance; }
+  .lede { margin-top: 16px; font-size: 1.05rem; color: var(--muted); max-width: 62ch; }
+  .lede strong { color: var(--ink); }
+
+  section { margin-top: 48px; }
+  h2 { font-family: var(--display); font-size: 1.4rem; font-weight: 660; margin-bottom: 12px; text-wrap: balance; }
+  p { color: var(--muted); max-width: 66ch; }
+  p strong { color: var(--ink); }
+
+  .commitment { border: 1px solid var(--line); background: var(--surface); padding: 20px 22px; margin-top: 12px; }
+  .commitment .n { font-family: var(--display); font-weight: 700; font-size: 1.3rem; color: var(--gold); margin-right: 10px; }
+  .commitment h3 { display: inline; font-size: 1.05rem; font-weight: 700; }
+  .commitment .promise { margin-top: 8px; font-size: 0.95rem; }
+  .commitment .mech { margin-top: 10px; font-size: 0.88rem; border-left: 3px solid var(--cobalt); background: var(--cobalt-soft); padding: 10px 14px; color: var(--ink); max-width: none; }
+  .commitment .mech b { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cobalt); display: block; margin-bottom: 4px; }
+
+  .forfeit { margin-top: 16px; border-left: 3px solid var(--gold); background: var(--gold-soft); padding: 18px 22px; max-width: 66ch; }
+  .forfeit .k { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 8px; }
+  .forfeit p { color: var(--ink); font-size: 0.98rem; }
+
+  table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 0.9rem; }
+  th { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); font-weight: 500; }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--line); color: var(--muted); vertical-align: top; }
+  td:first-child { color: var(--ink); font-weight: 600; white-space: nowrap; }
+  .scroll { overflow-x: auto; }
+
+  ul.plain { margin: 12px 0 0 1.1em; color: var(--muted); max-width: 64ch; display: grid; gap: 8px; }
+  ul.plain li strong { color: var(--ink); }
+
+  .sig { margin-top: 18px; border: 1px solid var(--line); background: var(--surface); padding: 22px 24px; font-family: var(--mono); font-size: 0.78rem; color: var(--muted); display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .sig .who { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+  .sig .line { margin-top: 26px; border-top: 1px solid var(--faint); padding-top: 6px; }
+  @media (max-width: 560px) { .sig { grid-template-columns: 1fr; } }
+
+  footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line); font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+</style>
+
+<div class="page">
+  <div class="masthead">
+    <svg width="26" height="22" viewBox="0 0 28 24" fill="none" aria-hidden="true">
+      <path d="M2 21 L2 7 L9 13 L14 2 L19 13 L26 7 L26 21 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" style="color: var(--gold);"/>
+    </svg>
+    <span class="brand">Kingmaker</span>
+    <span class="doc">The Charter<br>Signed, not stated</span>
+  </div>
+
+  <h1>The Kingmaker Charter</h1>
+  <p class="lede">Not a values page. A signed one: <strong>your signature and your named agent's on the same sheet</strong>, one page, five commitments, each enforced by a mechanism named in the annex. If we breach any of them, the Charter Remedy applies without you needing to argue for it. This page mirrors the signable document; the signed original governs.</p>
+
+  <section>
+    <h2>The five commitments</h2>
+
+    <div class="commitment">
+      <span class="n">1</span><h3>Never spammed</h3>
+      <p class="promise">One named agent, and today that agent is a founder. Approaches only above your Stated Bar: compensation floor, title, segment, travel ceiling. One follow-up, then silence is respected. "Dormant" is absolute: no check-ins, no newsletter creep.</p>
+      <p class="mech"><b>Mechanism</b>Your bar is on file and enforced by the register engine: a proposal below it is refused by the software before it reaches a human decision.</p>
+    </div>
+
+    <div class="commitment">
+      <span class="n">2</span><h3>Your employer learns nothing from us</h3>
+      <p class="promise">Anonymous dossiers under a k-anonymity rule: no combination of disclosed attributes may describe fewer than five plausible people in your market. Per-company blocklists. An NDA before any reveal. Double opt-in on every introduction, and you approve the exact dossier text before anything is sent.</p>
+      <p class="mech"><b>Mechanism</b>The engine counts the anonymity pool at generation time and refuses below five; your approval is bound to a hash of the exact text, so a changed dossier requires a fresh approval. Where the arithmetic cannot be met at a specificity worth sending, no anonymized dossier goes out at all: the flow is NDA first, then a named reveal on your explicit per-company yes.</p>
+    </div>
+
+    <div class="commitment">
+      <span class="n">3</span><h3>You always know everything we know about your market price</h3>
+      <p class="promise">Every datapoint we hold for your market, labeled honestly: document-verified (offer letter or payslip seen) or attested (structured interview). Refreshed quarterly, with negotiation counsel from former SE leaders when an offer lands.</p>
+      <p class="mech"><b>Mechanism</b>Comp verification is requested only at the moment it benefits you, never as an admission exam; published aggregates state the verified and attested split and suppress any cell below five datapoints.</p>
+    </div>
+
+    <div class="commitment">
+      <span class="n">4</span><h3>The Register makes you visibly elite</h3>
+      <p class="promise">Entered by peer nomination and evidence, never by signup. A consented roll of names. Two standings: Represented, and Fellow for the top decile, awarded on evidence by a named jury. We never publish rejections, and we never publish inflated statistics.</p>
+      <p class="mech"><b>Mechanism</b>Represented and Fellow standings cannot be granted at intake; they are earned through the vetting thresholds, and the software refuses shortcuts. The founding cohort closes at one hundred names; those names hold nomination rights into the first Fellow jury pool, see every Report first, and carry the founding mark on their dossier permanently.</p>
+    </div>
+
+    <div class="commitment">
+      <span class="n">5</span><h3>We work for your career, not this quarter's fee</h3>
+      <p class="promise">You see everything sent about you and the same data the company sees, including the fee arrangement on request, so you can check the recommendation against the incentive yourself. When staying put on an improved internal offer is your best move, we say so in writing. It is our published policy.</p>
+      <p class="mech"><b>Mechanism</b>Agent recognition inside Kingmaker is tied to your outcomes at twelve months (retention, satisfaction, progression), never to which offer you sign.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>The Remedy, including the forfeit</h2>
+    <p>The Remedy is not a complaints procedure; it operates automatically once a breach is identified, whether you raised it or we did: written acknowledgement within two working days, findings within five, and your election of any or all of a change of named agent, a freeze on all activity, full erasure, or continued representation on your terms.</p>
+    <div class="forfeit">
+      <span class="k">The confidentiality forfeit, verbatim</span>
+      <p>"If we breach Commitment 2 and a company you did not authorise learns of your search through our fault: you are notified within 24 hours of our discovering it; we terminate the client engagement concerned; and we forfeit any fee connected to it. This is contractual with our clients, not discretionary."</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Your data, in plain terms</h2>
+    <div class="scroll"><table>
+      <tr><th>What we hold</th><th>Why we may</th><th>How long</th></tr>
+      <tr><td>Identity and contact</td><td>Your consent</td><td>Life of representation</td></tr>
+      <tr><td>Stated Bar and blocklist</td><td>Your consent</td><td>Life of representation</td></tr>
+      <tr><td>Vetting notes and references</td><td>Your consent</td><td>Life of representation</td></tr>
+      <tr><td>Compensation data</td><td>Your consent; published only as anonymised aggregates at five or more datapoints</td><td>Life of representation</td></tr>
+    </table></div>
+    <ul class="plain">
+      <li><strong>No automated decisions.</strong> Every decision about you is made by a person; the software only refuses things on your behalf, never approves them.</li>
+      <li><strong>Full erasure on request.</strong> The record, every search reference, and every generated dossier. You may also complain to your data authority at any time; the Remedy never delays your statutory rights.</li>
+      <li><strong>Data hosted in the EU/EEA.</strong> We do not sell, rent, or trade engineer data, and we do not scrape your network.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>The signatures</h2>
+    <p>One page, two signatures, kept by you. A change of named agent requires a newly signed Charter page.</p>
+    <div class="sig">
+      <div><span class="who">Engineer</span><div class="line">Name and date</div></div>
+      <div><span class="who">Named agent</span><div class="line">Name and date</div></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Kingmaker · the Charter</span>
+    <span>Representation is free for life. Candidates are never charged.</span>
+  </footer>
+</div>
+
+</html>

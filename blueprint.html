@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<title>Kingmaker Blueprint</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,300..800&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Spline+Sans+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb;
+    --surface: #ffffff;
+    --ink: #171c30;
+    --muted: #565f7d;
+    --faint: #8a92ad;
+    --line: #dcdfeb;
+    --cobalt: #2447e0;
+    --gold: #b57b12;
+    --gold-soft: rgba(181, 123, 18, 0.1);
+    --cobalt-soft: rgba(36, 71, 224, 0.07);
+    --display: "Bricolage Grotesque", "Avenir Next", "Helvetica Neue", sans-serif;
+    --body: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --mono: "Spline Sans Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0a0e1e;
+      --surface: #121732;
+      --ink: #e8ecfa;
+      --muted: #9aa5c9;
+      --faint: #66719a;
+      --line: #262e52;
+      --cobalt: #6d87ff;
+      --gold: #f0b03f;
+      --gold-soft: rgba(240, 176, 63, 0.1);
+      --cobalt-soft: rgba(109, 135, 255, 0.08);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0e1e;
+    --surface: #121732;
+    --ink: #e8ecfa;
+    --muted: #9aa5c9;
+    --faint: #66719a;
+    --line: #262e52;
+    --cobalt: #6d87ff;
+    --gold: #f0b03f;
+    --gold-soft: rgba(240, 176, 63, 0.1);
+    --cobalt-soft: rgba(109, 135, 255, 0.08);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  .page { max-width: 860px; margin: 0 auto; padding: clamp(28px, 6vw, 72px) clamp(18px, 4vw, 40px) 80px; }
+  a { color: var(--cobalt); }
+
+  .masthead { display: flex; align-items: center; gap: 12px; margin-bottom: 34px; }
+  .masthead svg { flex: none; }
+  .masthead .brand { font-family: var(--display); font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; font-size: 0.9rem; }
+  .masthead .doc { margin-left: auto; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); text-align: right; }
+
+  h1 { font-family: var(--display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 680; line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance; max-width: 22ch; }
+  .oneliner { margin-top: 18px; font-size: 1.08rem; color: var(--muted); max-width: 64ch; }
+  .oneliner strong { color: var(--ink); }
+
+  section { margin-top: 56px; }
+  h2 { font-family: var(--display); font-size: 1.5rem; font-weight: 660; letter-spacing: -0.01em; margin-bottom: 16px; text-wrap: balance; }
+  h3 { font-size: 1.02rem; font-weight: 700; margin: 22px 0 8px; }
+  p { color: var(--muted); max-width: 68ch; }
+  p + p { margin-top: 12px; }
+  p strong, li strong { color: var(--ink); }
+  ul { margin: 12px 0 0 1.1em; color: var(--muted); max-width: 66ch; display: grid; gap: 8px; }
+
+  .callout { margin-top: 18px; border-left: 3px solid var(--gold); background: var(--gold-soft); padding: 16px 20px; max-width: 70ch; }
+  .callout p { color: var(--ink); }
+
+  .moats { margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .moat { background: var(--surface); border: 1px solid var(--line); padding: 20px 22px; }
+  .moat .k { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 8px; }
+  .moat h3 { margin: 0 0 6px; }
+  .moat p { font-size: 0.92rem; }
+  @media (max-width: 700px) { .moats { grid-template-columns: 1fr; } }
+
+  table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 0.92rem; }
+  th { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); font-weight: 500; }
+  td { padding: 11px 14px; border-bottom: 1px solid var(--line); color: var(--muted); vertical-align: top; }
+  td:first-child { color: var(--ink); font-weight: 600; white-space: nowrap; }
+  .num { font-variant-numeric: tabular-nums; }
+  .table-scroll { overflow-x: auto; }
+
+  .phases { margin-top: 18px; display: grid; gap: 0; }
+  .phase { display: grid; grid-template-columns: 130px 1fr; gap: 18px; padding: 18px 0; border-top: 1px solid var(--line); }
+  .phase:last-child { border-bottom: 1px solid var(--line); }
+  .phase .when { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; color: var(--cobalt); padding-top: 3px; }
+  .phase h3 { margin: 0 0 4px; }
+  .phase p { font-size: 0.92rem; }
+  @media (max-width: 620px) { .phase { grid-template-columns: 1fr; gap: 6px; } }
+
+  .risk { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 16px; padding: 13px 0; border-top: 1px solid var(--line); font-size: 0.92rem; }
+  .risk:last-of-type { border-bottom: 1px solid var(--line); }
+  .risk b { color: var(--ink); }
+  .risk span { color: var(--muted); }
+  @media (max-width: 620px) { .risk { grid-template-columns: 1fr; gap: 4px; } }
+
+  blockquote { margin-top: 16px; border-left: 3px solid var(--cobalt); background: var(--cobalt-soft); padding: 18px 22px; font-size: 0.98rem; color: var(--muted); max-width: 70ch; font-style: italic; }
+
+  .next { background: var(--surface); border: 1px solid var(--line); padding: 24px 26px; margin-top: 18px; }
+  .next ol { margin-left: 1.2em; color: var(--muted); display: grid; gap: 8px; }
+
+  footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--line); font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+</style>
+
+<div class="page">
+  <div class="masthead">
+    <svg width="26" height="22" viewBox="0 0 28 24" fill="none" aria-hidden="true">
+      <path d="M2 21 L2 7 L9 13 L14 2 L19 13 L26 7 L26 21 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" style="color: var(--gold);"/>
+    </svg>
+    <span class="brand">Kingmaker</span>
+    <span class="doc">Venture blueprint v2<br>2026-08-31 · Copenhagen</span>
+  </div>
+
+  <h1>The executive search house for the technical win.</h1>
+  <p class="oneliner"><strong>Kingmaker</strong> is the invite-only register and search house for the engineers who decide enterprise deals: Sales Engineers, Solutions Consultants and Architects, and Forward Deployed Engineers. The elite are represented and placed on their own terms, and companies come here when the technical win cannot be left to chance. Tagline: <strong>The deal is won before the seller speaks.</strong></p>
+
+  <section>
+    <h2>1. The category insight</h2>
+    <p>Every enterprise deal lives or dies in the technical evaluation, yet the people who win those evaluations have no institution. Presales talent is recruited through three broken channels: generalist sales recruiters running SE searches with AE playbooks (Betts, RevPilots), sub-scale contingency boutiques with no product, data, or community (Harvey Thomas, 3Search, J. Patrick), and in-house LinkedIn sourcing fighting 10 to 15 recruiter-spam messages a week. The largest community in the craft, PreSales Collective at 50,000 members, deliberately monetizes membership and job posts, not elite search. <strong>The Nordics have zero SE-specialist recruiters at all.</strong></p>
+    <p>Meanwhile the roles are repricing violently upward: US median SE OTE is $205k (senior $239k, AI/ML $263k, cybersecurity $255k), and Forward Deployed Engineer postings grew roughly 800% in 2025 with no specialist recruiter serving the category. The talent pool of roughly 300k to 500k people globally is too small for venture-scale marketplaces, which is exactly why Hired ($150M+ raised, brand killed June 2024) and Triplebyte (dead March 2023) failed here, and exactly the right size for a high-touch <strong>category king</strong>: a few thousand elite profiles cover most of the world's premium demand.</p>
+    <div class="callout"><p>The winning architecture combines four proven playbooks never combined in this category: Bravado (community-first economics), Toptal and A.Team (vetting scarcity as prestige), Levels.fyi and Ravio (verified compensation data as moat), and Korn Ferry (retained-search fee gravity), pointed at a vacant number-one seat.</p></div>
+  </section>
+
+  <section>
+    <h2>2. The name</h2>
+    <p><strong>Kingmaker</strong> states the quiet truth of enterprise software out loud: the account executive wears the crown, but the engineer decides who wins the kingdom. A cynical Principal SE reads "represented by Kingmaker" as overdue recognition; a CRO signing a "Kingmaker search" knows in one word what tier of weapon they are buying. Spellable after one hearing, unoccupied in the executive-search category, and it extends into an empire: the Kingmaker Register, Kingmaker Fellows, The Kingmaker Report.</p>
+    <p>Chosen from a five-direction naming sprint of 40+ collision-checked candidates. Runners-up: Onsight, Ravn, Cadenza, Valkyr. Required before launch spend: Nice class 35 trademark clearance (EU, UK, US) and domain acquisition. Fallback name: Ravn.</p>
+  </section>
+
+  <section>
+    <h2>3. The four moats, sequenced honestly</h2>
+    <div class="moats">
+      <div class="moat"><span class="k">Supply lock-up</span><h3>The Register</h3><p>Standing relationships with the world's top few thousand customer-facing engineers, built out from Europe: peer-nominated, evidence vetted, free forever, majority not job-seeking. A place on the Register outlasts every job switch, and placed engineers become hiring managers who buy searches. Early prestige comes from who is in (a named Founding Jury, a consented roll of names), never from fabricated statistics.</p></div>
+      <div class="moat"><span class="k">Vetting IP</span><h3>The Proof</h3><p>SE skill is uniquely observable, and every serious SE hire already ends in a mock discovery-and-demo panel. Kingmaker codifies the five dimensions companies already test. Vetting runs on evidence and references, never mandatory auditions; the recorded Showcase is candidate-owned (the Fellow tier), and the rubric is monetized employer-side as a structured interview kit.</p></div>
+      <div class="moat"><span class="k">Data</span><h3>The Report</h3><p>No credible European SE compensation source exists. Comp capture is embedded in every vetting interview from engineer one, at zero cost. Publish a "Snapshot" at n of about 100 with published methodology; claim benchmark authority only at n of 400+ offer-verified datapoints across five countries. Explore a Ravio or Figures partnership before they ship an SE cut.</p></div>
+      <div class="moat"><span class="k">The standard</span><h3>The Score</h3><p>Ten scored dimensions of SE-organization health. A scored diagnostic, not a revenue gate: every introduction discloses the organization's score and gaps to the candidate; only the public endorsed-employer badge is gated at 80+. The Michelin position on both sides, without refusing cold-start revenue.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>4. The candidate side: free forever, structural promises</h2>
+    <p>Candidates never pay. The network is the moat, not a revenue line. The promise is career agency, codified in a signed one-page Candidate Charter with mechanisms, not rhetoric:</p>
+    <div class="table-scroll"><table>
+      <tr><th>Commitment</th><th>Enforcing mechanism</th></tr>
+      <tr><td>Never spammed</td><td>One named agent; approaches only above your stated bar (comp floor, title, segment, travel cap, IC or leadership)</td></tr>
+      <tr><td>Employer can never find out</td><td>k-anonymity dossiers (every disclosed attribute combination maps to five or more plausible people), per-company blocklists, NDA before reveal, double opt-in, candidate approves the exact dossier text</td></tr>
+      <tr><td>Know your market price</td><td>Free verified comp data, quarterly refreshes, offer-time negotiation counsel by former SE leaders</td></tr>
+      <tr><td>The Register means something</td><td>Peer-nominated, evidence vetted, Represented and Fellow standings, consented roll of names</td></tr>
+      <tr><td>Career over fee</td><td>Right to see everything sent about you; no fee-motivated steering, with a named remedy; public policy of advising internal counteroffers when genuinely better</td></tr>
+    </table></div>
+    <p style="margin-top: 14px;"><strong>Outreach doctrine:</strong> never hype. The only message that survives the target persona's cynicism is verifiable specificity: "Here are 40 offer-verified Copenhagen senior SE packages from the last 12 months; here is where you sit." One follow-up, silence respected.</p>
+  </section>
+
+  <section>
+    <h2>5. The company side and pricing</h2>
+    <div class="table-scroll"><table>
+      <tr><th>Line</th><th>Terms</th><th class="num">Unit economics</th></tr>
+      <tr><td>Engaged Search</td><td>Exclusive only, on the 1+1 model: €5,000 opens the search (credited in full against the first month; beyond it nothing is invoiced before start date), one month of OTE at start, one more at the six-month anniversary (€20k minimum). Both invoices issued at start; the second is waived by credit note only on voluntary resignation or cause. Early clients trade a named case study, not a discount</td><td class="num">€24.5k Copenhagen senior; ~€37k US-remote</td></tr>
+      <tr><td>Leadership</td><td>A month and a half at start, a month and a half at six months (about 25% of OTE). Employers holding the endorsed mark (org score 80+) keep 1+1: the Standard's commercial teeth. Retained thirds (30-33%, €50k minimum) available whenever a client requests confidentiality</td><td class="num">€55k Head of Presales (€37k endorsed); ~$105k US VP</td></tr>
+      <tr><td>FDE and AI Solutions</td><td>Advisory plus searches for European scale-ups building FDE teams. No AI-lab placement promises</td><td class="num">Retained, premium</td></tr>
+      <tr><td>Talent Partner</td><td>From month 9: €3-5k monthly, priority access, benchmarking, 18-20% reduced success fee</td><td class="num">€36-60k ARR each</td></tr>
+      <tr><td>Fractional bench</td><td>Months 9-12, the downturn hedge: transparent 18-22% markup. German AÜG review before DACH</td><td class="num">Counter-cyclical</td></tr>
+    </table></div>
+    <p style="margin-top: 14px;">Honest two-track SLA, stated before signature: 7 days to shortlist when the Register holds a match; 3 to 4 weeks when approaching the passive elite. Never non-exclusive contingency. The rate card stays one sentence per practice: one month of their OTE when they start, one more once they have stayed six months; leadership at a month and a half each, with the endorsed mark buying 1+1 back.</p>
+  </section>
+
+  <section>
+    <h2>6. Go to market: one city, one revenue line, then compound</h2>
+    <div class="phases">
+      <div class="phase"><span class="when">Sep-Nov 2026</span><div><h3>Copenhagen beachhead</h3><p>Founding Jury of 4-6 respected SE leaders first (published names, fixed honorarium, no equity, 24-month terms; no Fellow or jury language publishes before three are named), then the Founding 100 via founder-led vetting interviews, 8-10 a week. The cohort closes at one hundred names with permanent privileges: the founding roll, nomination rights into the first Fellow jury pool, every Report first. Brand site live. Sign 2-3 lighthouse searches only when the Register verifiably holds 3+ plausible candidates: sell from inventory, not into it. Targets: 30 on the Register, 60%+ passive, one offer out.</p></div></div>
+      <div class="phase"><span class="when">Dec 2026-Feb 2027</span><div><h3>Proof and first data asset</h3><p>SaaStr AI London for UK and EU demand; Copenhagen and Stockholm dinners; about 100 on the Register. Publish the European SE Compensation Snapshot (n of about 100, methodology published). Close 3-5 placements, €75-150k.</p></div></div>
+      <div class="phase"><span class="when">Mar 2027-Feb 2028</span><div><h3>Productize and moat</h3><p>Register directory and search workflow replace Airtable; Talent Partner pilot; chapter captains in Berlin, London, Amsterdam after placement 10; benchmark v2 as give-to-get data product; fractional bench live; FDE practice for EU scale-ups; 100% outcome logging.</p></div></div>
+      <div class="phase"><span class="when">Beyond</span><div><h3>Category king</h3><p>US-remote retained practice from months 12-24; US ground presence only after €2M run-rate. Path to €5-10M as the global category king of customer-facing engineering talent.</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>7. Financial model, honest math</h2>
+    <div class="table-scroll"><table>
+      <tr><th></th><th>Year 1 (founder + jury)</th><th>Year 3 (team of 4-5)</th></tr>
+      <tr><td>IC placements (1+1)</td><td class="num">6-8 at €23-37k</td><td class="num">About 40 at about €28k</td></tr>
+      <tr><td>Leadership</td><td class="num">1 at €40-98k (1.5+1.5; endorsed at 1+1)</td><td class="num">5 at €50-100k</td></tr>
+      <tr><td>Talent Partner</td><td class="num">0</td><td class="num">8-10 subscribers</td></tr>
+      <tr><td><strong>Booked revenue</strong></td><td class="num"><strong>€215-330k</strong></td><td class="num"><strong>€1.7-2.1M</strong></td></tr>
+      <tr><td>Collected in-year</td><td class="num">€130-200k; commencement fees pull cash forward, deferred halves land months 9-12</td><td class="num">Approaches booked as the base compounds</td></tr>
+    </table></div>
+    <p style="margin-top: 14px;">Modeled at 60% search completion; the 1+1 model defers half of every fee to months 9-12 after signature, which makes the runway assumption load-bearing. Bootstrap; no venture capital required or advisable (over-capitalization killed the comparable marketplaces; Toptal reached about $167M ARR with zero VC). Founder holds 12-18 months personal runway.</p>
+  </section>
+
+  <section>
+    <h2>8. Risks and standing mitigations</h2>
+    <div class="risk"><b>Founder-credibility cold start (the fatal one)</b><span>Founding Jury before any "institution" language; consented roll of names as the only early prestige signal; no stat theater.</span></div>
+    <div class="risk"><b>Confidentiality breach is existential</b><span>k-anonymity rule, candidate-approved dossier text, breach protocol and indemnity insurance before introduction one.</span></div>
+    <div class="risk"><b>PSC or a US data hybrid moves upmarket</b><span>Partnership proposal on paper inside 90 days; the invite-only Register is the wedge a 50k-member community cannot copy.</span></div>
+    <div class="risk"><b>Cyclicality and SE headcount compression</b><span>Fractional bench, leadership practice, and data lines shipped before the next downturn; compression raises the premium on elite hires.</span></div>
+    <div class="risk"><b>AI disruption of the role</b><span>Shrinks mid-tier volume while raising elite premiums; the org-design advisory line is the option on the trend.</span></div>
+    <div class="risk"><b>Fee-pressure temptation</b><span>Governance rule: decline non-exclusive work, every time.</span></div>
+    <div class="risk"><b>Legal</b><span>Trademark clearance; GDPR basis and retention for payslips and recordings; dual-agency disclosure; AÜG review for DACH fractional work.</span></div>
+  </section>
+
+  <section>
+    <h2>9. The red-team verdict, recorded</h2>
+    <blockquote>"The category insight is genuinely good: customer-facing engineering talent is a real, unowned, repricing niche, and the register-plus-data-plus-standard architecture is the right end state. Fix the prestige cold start, the Showcase, and the launch commercial terms, convert the health check from gate to scored diagnostic, cut year one to 6-8 placements in one city with honest cash modeling, and the plan becomes a fundable, bootstrap-viable path to a €1.5-2M elite boutique by year three, with a real option on the category-king position."</blockquote>
+    <p style="margin-top: 12px;">All named fixes are incorporated above. The ambition remains number one in the world; the sequencing now earns it.</p>
+  </section>
+
+  <section>
+    <h2>10. What exists today, and what to do next</h2>
+    <p>The house is founded by Jacob Top Møller (engineer by training, President's Club from the technical seat, built Leapwork's global SE team) and Daniel Wallén (15 years in recruitment and executive search, competency-based and network-driven, Stockholm). The partnership is written down: Daniel owns the client side (named accounts, diagnostics, search execution) and the Stockholm hub; Jacob owns the candidate side (Register, vetting, content, Jury) and Copenhagen. Full-time commitment dates and Daniel's checkable track-record numbers are open founder inputs, marked in the documents rather than invented.</p>
+    <p>The repo holds the operational playbook, ready to use: the signable Candidate Charter, the five-dimension vetting rubric with interview guide, the ten-dimension Kingmaker Standard with intake script, pricing and contract skeletons, the Founding 100 playbook, the two-sided outreach playbook, and a sourced list of 30 companies with live SE and FDE reqs, ranked for the first Copenhagen call wave (All Gravy, Legora, n8n, Cognite, Qdrant on top).</p>
+    <div class="next">
+      <ol>
+        <li>Nice class 35 trademark clearance for KINGMAKER (EU, UK, US) and domain acquisition. kingmakerregister.com showed no DNS at check time.</li>
+        <li>Recruit the 4-6 person Founding Jury before any public register language.</li>
+        <li>Work the top 10 of the demand list for the first lighthouse searches.</li>
+        <li>Stand up the mail addresses used on the site, then share it.</li>
+      </ol>
+    </div>
+  </section>
+
+  <footer>
+    <span>Kingmaker · venture blueprint v2</span>
+    <span>Research: 3 multi-agent workflows, 20 agents, red-teamed</span>
+  </footer>
+</div>
+
+</html>
