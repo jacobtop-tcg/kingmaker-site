@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<title>The Founding 100 Playbook</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,300..800&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Spline+Sans+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --ink: #171c30; --muted: #565f7d; --faint: #8a92ad;
+    --line: #dcdfeb; --cobalt: #2447e0; --gold: #b57b12; --gold-soft: rgba(181,123,18,0.1);
+    --display: "Bricolage Grotesque", "Avenir Next", "Helvetica Neue", sans-serif;
+    --body: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --mono: "Spline Sans Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg:#0a0e1e; --surface:#121732; --ink:#e8ecfa; --muted:#9aa5c9; --faint:#66719a; --line:#262e52; --cobalt:#6d87ff; --gold:#f0b03f; --gold-soft:rgba(240,176,63,0.1); }
+  }
+  :root[data-theme="dark"] { --bg:#0a0e1e; --surface:#121732; --ink:#e8ecfa; --muted:#9aa5c9; --faint:#66719a; --line:#262e52; --cobalt:#6d87ff; --gold:#f0b03f; --gold-soft:rgba(240,176,63,0.1); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.68; -webkit-font-smoothing:antialiased; }
+  .page { max-width:860px; margin:0 auto; padding:clamp(28px,5vw,64px) clamp(18px,4vw,40px) 80px; }
+  .masthead { display:flex; align-items:center; gap:12px; margin-bottom:30px; }
+  .masthead .brand { font-family:var(--display); font-weight:700; letter-spacing:0.18em; text-transform:uppercase; font-size:0.9rem; }
+  .masthead .doc { margin-left:auto; font-family:var(--mono); font-size:0.64rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--faint); text-align:right; }
+  .masthead a { color:inherit; text-decoration:none; }
+  #md h1 { font-family:var(--display); font-size:clamp(1.7rem,4vw,2.4rem); font-weight:680; line-height:1.12; margin:10px 0 14px; letter-spacing:-0.01em; }
+  #md h2 { font-family:var(--display); font-size:1.35rem; font-weight:660; margin:40px 0 10px; }
+  #md h3 { font-size:1.02rem; font-weight:700; margin:26px 0 8px; }
+  #md p { color:var(--muted); max-width:72ch; margin:10px 0; }
+  #md strong { color:var(--ink); }
+  #md a { color:var(--cobalt); }
+  #md ul, #md ol { margin:10px 0 10px 1.3em; color:var(--muted); max-width:70ch; }
+  #md li { margin:5px 0; }
+  #md blockquote { border-left:3px solid var(--gold); background:var(--gold-soft); padding:12px 18px; margin:14px 0; }
+  #md blockquote p { color:var(--ink); }
+  #md code { font-family:var(--mono); font-size:0.85em; background:var(--surface); border:1px solid var(--line); padding:1px 5px; }
+  #md pre { background:var(--surface); border:1px solid var(--line); padding:14px 18px; overflow-x:auto; margin:14px 0; }
+  #md pre code { border:none; padding:0; }
+  #md table { border-collapse:collapse; margin:14px 0; font-size:0.86rem; width:100%; display:block; overflow-x:auto; }
+  #md th { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--faint); text-align:left; padding:8px 12px; border-bottom:1px solid var(--line); white-space:nowrap; }
+  #md td { padding:9px 12px; border-bottom:1px solid var(--line); color:var(--muted); vertical-align:top; }
+  #md hr { border:none; border-top:1px solid var(--line); margin:34px 0; }
+  footer { margin-top:56px; padding-top:16px; border-top:1px solid var(--line); font-family:var(--mono); font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--faint); }
+</style>
+<div class="page">
+  <div class="masthead"><svg width="24" height="20" viewBox="0 0 28 24" fill="none" aria-hidden="true"><path d="M2 21 L2 7 L9 13 L14 2 L19 13 L26 7 L26 21 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" style="color: var(--gold);"/></svg><a class="brand" href="index.html">Kingmaker</a><span class="doc"><a href="index.html">Partner pack</a><br>Working document</span></div>
+  <div id="md"><noscript><p>Enable JavaScript to render this document.</p></noscript></div>
+  <footer>Shared for collaboration between the founders. Not for redistribution.</footer>
+</div>
+<script type="text/markdown" id="src"># The Founding 100 Playbook
+
+> **Phase 0 override (Sep 2026, side-build):** the cadence below describes full-throttle mode. The adopted operating mode is one to two vetting conversations a week, split between both founders, with every name known personally by both. All month-3 targets stretch accordingly (30 on the Register becomes a month-6-to-9 target); the LinkedIn rhythm drops to 1x/week per founder; the dinners stay quarterly. The intake form (`ops/register/intake-form.md`) is the working instrument for every conversation. The public face runs the full North-Star site with pool-first honesty written in; the demand side stays dormant until the blueprint's Phase 0 activation triggers fire.
+
+**Kingmaker — building the first cohort of the Register with zero pre-existing prestige**
+
+Version 1.0 · Copenhagen · August 2026 · Owner: Jacob
+
+---
+
+## How to use this document
+
+This is an operating manual, not a strategy paper. Sections 1–4 are what you say and to whom. Sections 5–6 are what you do every week. Section 7 is how you know whether it is working. Print it. Everything in here assumes one founder, roughly 25 productive hours a week on the Register, and no brand to lean on except the quality of the conversations themselves.
+
+The single organising principle: **prestige is borrowed before it is built.** Nobody joins an empty register because of a clever name. They join because someone they respect is already in it. So the sequence is fixed: Jury first, members second, mechanics third.
+
+---
+
+## 1. Sequence person before institution: the Founding Jury
+
+### 1.1 What it is
+
+Four to six respected SE leaders — VP or Director of Solutions Engineering / Presales at recognisable European scale-ups — who agree to lend their names and one hour a month. They are the credibility collateral for every conversation that follows. Every founding-member pitch in Section 2 opens with their names, not with Kingmaker.
+
+### 1.2 Target profile
+
+| Criterion | Requirement |
+|---|---|
+| Seniority | VP / Director level, has built or run an SE org of 10+ |
+| Employer signal | Recognisable SaaS scale-up or category leader (think the calibre of Pleo, Templafy, Dixa, Trustpilot, Celonis, Personio, UiPath, Mews — adjust to your actual network) |
+| Geography | 3–4 Nordic, 1–2 wider EU, so the Copenhagen story is honest but not parochial |
+| Reputation | Speaks or writes occasionally; people cite them; ex-reports say good things unprompted |
+| Diversity | At least two of the six should not look like the other four |
+| Availability | Not currently building a competing thing; not between jobs (that changes the incentive) |
+
+Rule of thumb: if their name in the first sentence of a cold message would not raise the reply rate, they are not Jury material — they are a founding member.
+
+### 1.3 What they actually do
+
+Keep the ask small and concrete. Overloaded advisory roles die quietly.
+
+- One 60-minute call per month (rubric calibration, borderline vetting cases, market read).
+- Name and title on the site and in outreach, with approval of exact wording.
+- Two to three warm introductions per quarter to people they rate.
+- Optional: chair or co-host one peer circle (Section 6); attend the quarterly dinner.
+
+They do **not** do sales, sourcing quotas, or client work.
+
+### 1.4 Juror terms
+
+Juror terms are fixed and identical for every juror. One form, not a menu.
+
+| Term | Rule |
+|---|---|
+| Published names | Juror names and titles are public from appointment, with approval of exact wording |
+| Fixed honorarium | [to be set by the founders], plus dinner costs. No equity, ever. Advisors and jurors are never the same people |
+| Term | 24 months |
+| Recusal | A juror is recused from any candidate at the juror's own employer |
+| Non-placeable | A juror cannot be placed through the Register during their term |
+
+**The hard gate:** no Fellow-tier or jury language is published anywhere (site, outreach, Charter, dinner invitations, anywhere) until at least three jurors are named publicly. Until that day the Jury does not exist in public, whatever has been signed in private.
+
+Paper it. A one-page letter beats a handshake, and the act of signing is itself a commitment device.
+
+### 1.5 The approach script (Jury)
+
+Delivery: a short personal message to book a call, then this structure on the call. Never pitch the whole thing in writing.
+
+**Opening (the honest frame):**
+
+> "I'm building something in a space you know better than I do, and before I go further I want five or six people whose judgement I trust to tell me where it's wrong — and, if it survives that, to put their names on it."
+
+**The problem, in their language:**
+
+> "Every SE leader I speak to says the same two things: recruiters send them AE CVs with 'technical' written on them, and their own best people get approached with roles miles below their level. There is no retained-search practice anywhere in Europe that actually understands the technical win. In the Nordics there is nobody at all."
+
+**The model, in 60 seconds:**
+
+> "An invite-only register of proven SEs. Peer-nominated, evidence-vetted against a five-dimension rubric, free for candidates forever, mostly passive people who are happy where they are. Companies pay retained-search fees for access done properly — one named agent, double opt-in, anonymised dossiers, a signed charter with a remedy if we break it. The bar is set by practitioners, which is where you come in."
+
+**The specific ask:**
+
+> "Founding Jury. One hour a month to calibrate the bar and rule on borderline cases, your name on the standard, and two or three introductions a quarter to people you rate. The terms are fixed and the same for every juror: a published name, a fixed honorarium, no equity, a 24-month term, recusal on anyone at your own employer, and you can't be placed through the Register while you serve. If in six months you think it's not working, you walk and I remove your name within a week."
+
+**Handling the predictable objections:**
+
+| They say | You say |
+|---|---|
+| "Is this a recruitment agency? I don't want my name on an agency." | "It's retained search with a candidate charter, and your role is guarding the standard, not selling. You never touch a client. If we ever behave like a bodyshop, that's exactly what the Jury exists to stop — and you can resign publicly." |
+| "Will you poach my team?" | "Your company goes on my blocklist as a condition of you joining, in writing. Your people can join the Register; nobody approaches them about roles without their explicit opt-in, same as everyone else." |
+| "What's in it for me really?" | "First look at the best comp data in Europe as it accumulates, a seat shaping a standard the industry lacks, and a fixed honorarium for your time. Deliberately no equity: the Jury's judgement is worth more unbought. If it doesn't work, you've lost about twelve hours." |
+| "Why you?" | Answer honestly. Whatever your real background is, say it plainly, then: "which is exactly why the bar is set by a jury of practitioners and not by me." |
+
+**Sequencing note:** land the first Jury member before approaching the rest. The second call opens with "X has agreed to be on the Founding Jury" and becomes twice as easy. Aim: Jury complete within 6 weeks of starting.
+
+---
+
+## 2. The founding-member value prop and pitch
+
+### 2.1 What a happy, passive senior SE gets on day 1
+
+This is the entire proposition. Memorise it; it must survive being said out loud to a sceptic.
+
+| What they get | What it means concretely |
+|---|---|
+| Honestly labeled comp data | Their compensation, benchmarked against peer data where every datapoint is labeled document-verified or attested and the split is published on every output. Early members get the European SE Compensation Snapshot first, free, at n≈100 |
+| A peer circle seat | 8–10 seniority-matched peers, monthly, off the record (Section 6). For most senior SEs this alone is worth the call |
+| Founding-cohort standing, forever | One of one hundred names, permanently; the cohort closes at one hundred and cannot be re-earned. Four privileges, permanent: a place on the consented founding roll, nomination rights into the first Fellow jury pool, every Report first, and the founding mark on the dossier forever |
+| A named agent | One person (Jacob, for now) who knows their work, their floor, and their blocklist. Not a queue, not a portal |
+| Zero spam, structurally | The Charter: approaches only above their stated bar, k-anonymous dossiers, NDA before reveal, double opt-in, per-company blocklists, a named remedy if breached |
+| Nothing to do | Free forever. No profile grooming, no mandatory recorded demo, no obligation to be "on the market". Most members never are |
+
+What they give: 60–75 minutes for a vetting conversation, verified comp data (held confidentially, published only in aggregate), and — if the conversation earns it — a name or two of people they rate.
+
+### 2.2 The interview format (the founder's 8–10 weekly coffees)
+
+- 60–75 minutes. Video or coffee. Never call it an interview in the invitation; it is a conversation, but you run it to a structure.
+- First 10 minutes: their story, unprompted. Middle 40: walk two real deals — one won, one lost — probing the five rubric dimensions (discovery, technical credibility, storytelling, objection handling, commercial awareness). You are scoring; they are talking shop with someone who finally speaks the language.
+- 10 minutes: comp capture. Frame: "Everything you tell me goes into the benchmark, labeled honestly: document-verified once I've seen the paperwork, attested until then. You see the aggregate first. Nothing individual is ever shown to anyone."
+- Final 10: the intelligence question (Section 3) and logistics.
+- Same day: scores, notes and comp into Airtable (Section 5.4). An unscored interview did not happen.
+
+### 2.3 The honest pitch script (founding member)
+
+**The opening message (LinkedIn or via nominator):**
+
+> "[Nominator] mentioned you as one of the best SEs they've worked a deal with. I'm building Kingmaker — an invite-only register of proven sales engineers, backed by a jury including [Jury names]. It's free for candidates permanently and most members aren't looking for anything. I'd value 60 minutes to hear how you work and, honestly, to see whether you clear our bar. Coffee or a call?"
+
+Note what this does: names the nominator (with consent), names the Jury, states it is free, states it is selective, and asks for time rather than offering a job.
+
+Gate check: this message exists only once three or more jurors are named publicly (the hard gate, Section 1.4). Until then, outreach mentions no Jury, no Fellow standing, no jury language of any kind; it stands on the nominator and the mechanism alone.
+
+**On the call, when they ask "so what is this really":**
+
+> "Walk any enterprise deal back to the moment it tipped and you find an engineer. The AE wears the crown; the SE decides who wins the kingdom. Kingmaker is the register of those engineers. We vet on evidence — real deals, not CV keywords — and companies pay retained fees to hire from a register they can trust. Candidates never pay and never will. Most members are happy where they are; the register is where you're known and represented long before you're on the market, on terms you set."
+
+**The honesty clauses — say these unprompted, early:**
+
+> "I'll be straight about where we are. We're building the first hundred. You'd be a founding member, which means the network is small today and the value compounds as it grows. What you get on day one is the comp benchmark, the peer circle, and a standing agreement that nobody approaches you except above the bar you set. What you don't get is a magic pipeline of dream offers next Tuesday."
+
+> "And this conversation is a vetting conversation. Not everyone I meet joins. If you don't clear the bar I'll tell you privately and specifically, and it goes no further."
+
+**Closing a yes:**
+
+> "Two things before you're in: I'll send the Candidate Charter — read it, it's one page and it's binding on me, not you. And set your terms: minimum bar for any approach, and any companies you never want to hear about. That's your blocklist; it's honoured without explanation."
+
+---
+
+## 3. Nomination mechanics without the MLM smell
+
+### 3.1 The rule
+
+**No quotas, no scripts that smell of scripts, no "invite 2 friends to unlock".** Hired and Triplebyte died partly because they industrialised what only works as a genuine professional courtesy. Nomination at Kingmaker is intelligence-gathering that happens to produce introductions.
+
+### 3.2 The question
+
+End every vetting conversation — pass or not — with some version of:
+
+> "Last one, and it's the question I learn the most from: who's the best SE you've ever worked a deal with? The person you'd want next to you on a must-win POC."
+
+Then be quiet. Follow-ups, used sparingly:
+
+- "What did they do that others don't?" (This doubles as rubric calibration — you learn what practitioners think excellence is.)
+- "Would they take a call if I mentioned you'd rated them — and are you comfortable with me doing that?"
+
+Consent to be named is explicit, every time. A nomination without consent to be named is still recorded, but the outreach is cold and says so.
+
+### 3.3 What not to do
+
+| Anti-pattern | Why it kills the brand |
+|---|---|
+| "You need to nominate two people to complete your membership" | Instantly reads as multi-level marketing; senior people smell it in one sentence |
+| Referral bounties or cash per nomination | Converts a judgement call into a transaction; degrades signal quality |
+| Public leaderboards of nominators | Gamification is staffing hustle, not retained search |
+| Chasing a member three times for names | One ask per conversation. If nothing comes, the conversation wasn't good enough — fix that instead |
+
+### 3.4 Nominator recognition, done tastefully
+
+- **Private, always-on:** when a nominee passes vetting and joins, the nominator gets a short personal note: "X cleared the bar and joined this week. Your read was right. Thank you." Nothing more.
+- **Recorded:** Airtable tracks who nominated whom. Repeat nominators with a high pass rate are your future Jury bench and your best signal of network health (Section 7).
+- **Occasional and analogue:** a good bottle or a book after a second successful nomination. Never a scheme, never announced, never expected.
+- **Semi-public, consented only:** at the quarterly dinner, a raised glass to "the people whose judgement built this table" — names only with prior consent.
+
+---
+
+## 4. Early-prestige rules
+
+Prestige with zero history is built from two materials: real names and visible restraint.
+
+### 4.1 Publish what is true; never manufacture the rest
+
+- **Do publish**, with written consent per person: member names, titles and employers on the site ("Among the Founding 100"). Even 15 real names of respected SEs beats any statistic.
+- **Do publish** the Jury, with photos and one-line bios.
+- **Never publish** an acceptance rate, "top X%" claim, or member count you cannot evidence. With n=40 conversations any percentage is noise dressed as selectivity, and one sceptical VP doing arithmetic in public ends the brand. The editorial test applies: proven, not promised.
+- **Never publish** Fellow-tier or jury language of any kind before at least three jurors are named publicly (the hard gate, Section 1.4). A jury of one or two names is a claim you cannot yet defend.
+- Until the numbers are real, use structural language instead: "invite-only", "peer-nominated", "evidence-vetted", "the cohort is capped at 100". These are claims about the mechanism, and the mechanism is true from day one.
+- Comp data follows the same discipline: "Snapshot" at n≈100, the word "benchmark" only at n≥400, and every published output states its split of document-verified versus attested datapoints, always.
+
+### 4.2 Cap-and-cohort mechanics
+
+| Mechanic | Rule |
+|---|---|
+| The cap | The founding cohort closes at one hundred names. The cap is public and hard: stated everywhere, honoured even if member 101 is extraordinary — they open Cohort Two |
+| Why it works | Scarcity that costs you something is the only scarcity that signals. Turning someone excellent into "first on the Cohort Two list" is the story members retell |
+| The waitlist | From member ~60, strong candidates can be vetted and held: "You've cleared the bar; the founding cohort closes at 100 and I expect it full by [month]. You'd open Cohort Two." Vetting continues; admission is sequenced |
+| Founding privileges | Permanent, all four: a place on the consented founding roll, nomination rights into the first Fellow jury pool, every Report first, and the founding mark on the dossier forever. First refusal on peer-circle seats remains a founding courtesy. Cohort Two gets the Register, not the privileges |
+| Pace discipline | Do not sprint to 100 by dropping the bar. 100 mediocre members is a database; 60 excellent ones is a register. The cap has no deadline, only a bar |
+
+---
+
+## 5. Weekly operating cadence, months 0–3
+
+### 5.1 The standard week
+
+| Day | Block | Activity |
+|---|---|---|
+| Mon | 08:30–09:30 | Pipeline review in Airtable: who's stalled, who's owed a reply, this week's 8–10 interview slots confirmed |
+| Mon | 09:30–10:00 | LinkedIn post 1 (craft/insight — see 5.2) |
+| Tue–Thu | flexible | 8–10 vetting conversations (2–3 per day; protect at least one deep-work morning) |
+| Wed | 09:30–10:00 | LinkedIn post 2 (market observation or comp teaser, aggregate only) |
+| Fri | 09:00–10:30 | Airtable hygiene (5.4); same-week nominator thank-yous; score calibration notes for the Jury |
+| Fri | 10:30–11:00 | LinkedIn post 3 (register progress — real names with consent, or an honest build-in-public note) |
+| Fri | 11:00–11:30 | Weekly scorecard: interviews done, passes, nominations, passive share (Section 7). Fifteen honest minutes |
+
+Everything else — client development, site, admin — fits around this. In months 0–3 the interviews are the business.
+
+### 5.2 LinkedIn, 3× per week, in the brand voice
+
+- **Post 1 (craft):** something a senior SE would nod at. Discovery technique, POC scoping, the anatomy of a lost technical eval. No selling.
+- **Post 2 (market):** an observation from the week's conversations, anonymised and aggregated. "Of the last 20 senior SEs I've interviewed, 14 have never had a comp conversation grounded in verified peer data." Only if true.
+- **Post 3 (register):** progress with restraint. A new consented member name, a Jury introduction, a lesson from building. Never counts you can't defend, never hype.
+- Voice check before posting: no exclamation marks; no banned words (rockstar, ninja, A-player, top talent, passionate); would a Director of SE at a serious company reshare it without embarrassment.
+
+### 5.3 The quarterly Copenhagen dinner
+
+- One per quarter, affiliated with the PreSales Collective community where possible (co-host or cross-invite with the local PSC chapter — borrowed community, not borrowed branding).
+- 10–14 seats: 2 Jury, 6–8 members/strong candidates, 2–3 wildcard senior practitioners who are future members or future clients.
+- Good restaurant, private room, one table. Kingmaker pays. No slides, no pitch, no sponsors. One structured prompt over the main course ("the deal that taught you the most"), otherwise conversation.
+- Off the record by default. Follow-up: personal notes within 48 hours; zero mass emails.
+- Budget: €1,200–1,800. It is the cheapest prestige you will buy this year.
+
+### 5.4 Airtable hygiene (Friday, non-negotiable)
+
+Minimum viable schema, kept current weekly:
+
+| Table | Key fields |
+|---|---|
+| People | Name, role, company, seniority, geography, status (lead / invited / interviewed / member / waitlist / declined / not-passed), passive vs active, blocklist entries, consent flags (name publishable? nominator nameable?) |
+| Interviews | Date, rubric scores ×5, comp data (base/OTE/equity, verified), notes link, outcome |
+| Nominations | Nominator → nominee, consent to name, date, outcome (contacted / interviewed / joined) |
+| Touches | Every substantive contact, dated, so no member goes 60+ days without one |
+
+Hygiene rules: every interview scored same-day; every nomination logged with consent flag; every status change dated; Friday audit catches anything stale. The Register's future defensibility is this data — treat it as the product, because it is.
+
+---
+
+## 6. The peer-circle format
+
+The peer circle is the day-one value that costs nearly nothing and retains passive members who want nothing else from you yet.
+
+| Element | Specification |
+|---|---|
+| Size | 8–10 people per circle. Below 7, reschedule; above 10, split |
+| Composition | Seniority-matched (IC seniors together; leaders together). Never mix a Director with their own reports. No two members from directly competing employers in the same circle without both consenting |
+| Cadence | Monthly, 90 minutes, same slot each month (e.g. first Thursday, 16:30 CET). Video by default; in person when geography allows |
+| Rules | Off the record, Chatham House Rule stated at the top of every session: use what you hear, never attribute it. No recording, ever. No clients present, ever. What's said in the circle never appears in a dossier or a LinkedIn post |
+| Format | 10 min check-in round · 60 min on one member's real problem (rotating "case owner" brings a live deal, org issue or comp question) · 15 min open floor · 5 min next case owner volunteers |
+| Facilitation | Jacob facilitates the first two sessions of each circle, then hands the chair to a member or Jury sponsor. The house convenes; it does not dominate |
+| Kingmaker's role | Convene, schedule, protect the rules. Nothing discussed is sourcing intelligence. The one legitimate signal you may act on: a member privately telling *you*, outside the circle, that they are open to a move |
+
+Launch the first circle at ~15 members (enough to seniority-match one group of 8). Second circle at ~30. A leadership circle — Directors and VPs only — is both retention and the seedbed of the future leadership practice.
+
+---
+
+## 7. Milestones and kill / adjust criteria
+
+Reviewed on the Friday scorecard; judged formally at the end of month 3 with the Jury on the call.
+
+### 7.1 Targets
+
+| Metric | Month 1 | Month 2 | Month 3 |
+|---|---|---|---|
+| Founding Jury signed | 3+ | 4–6 (complete) | complete |
+| Vetting conversations (cumulative) | 15+ | 45+ | 90+ |
+| Members admitted (cumulative) | 5+ | 15+ | **30+** |
+| Passive share of members | — | >50% | **>60%** |
+| Nomination-sourced interviews | any | 30% of pipeline | 50% of pipeline |
+| Repeat nominators (2+ nominations) | — | 1 | **3+** |
+| Consented published names | — | 5+ | 12+ |
+| Peer circles running | — | 1 | 2 |
+| Comp records captured (labeled document-verified or attested) | 15+ | 45+ | 90+ |
+
+### 7.2 What each metric is actually testing
+
+- **30 members by month 3** tests whether the value prop converts at retained-search quality without dropping the bar. (At 90 conversations and a defensible bar, ~30 admits implies a pass rate near a third — plausible for a nominated pipeline.)
+- **>60% passive share** tests whether this is a register or just another job board wearing a waistcoat. If actively-looking candidates dominate, you have adverse selection — the exact failure mode that killed the marketplaces.
+- **Repeat nominators** are the single best early signal: someone staked their judgement once, watched how you treated the person, and did it again. Three repeat nominators is product-market fit for the mechanism.
+- **Nomination-sourced share** tests whether the flywheel spins without paid fuel.
+
+### 7.3 Adjust triggers (amber — change the approach, not the mission)
+
+| Signal at month 3 | Likely cause | Adjustment |
+|---|---|---|
+| <30 members but pass rate healthy and pipeline full | Throughput, not proposition | Raise interviews to 12/week; recruit a Jury member to co-vet; tighten scheduling |
+| Conversations happen but nominations don't | Interviews aren't earning the intelligence question | Rework the middle 40 minutes; ask two Jury members to audit your interview recording (with consent) |
+| Passive share 40–60% | Sourcing skews to active-market channels | Shift sourcing to Jury introductions and nominations only; pause any channel that attracts job-seekers |
+| Members join but go silent | Day-1 value not landing | Accelerate the peer circle and comp snapshot; call every silent member personally |
+| Jury signed but disengaged | Ask was too vague | Give each Jury member one named, dated task per month |
+
+### 7.4 Kill / pivot triggers (red — the model, not the effort, is wrong)
+
+Any of these at the month-3 review, sustained despite the adjustments above, triggers a serious pivot conversation with the Jury:
+
+1. **Fewer than 15 members from 60+ conversations** with an honest bar — the value prop does not convert with this founder in this market.
+2. **Passive share below 40%** and falling — you are building the thing that already died twice.
+3. **Zero repeat nominators and <20% nomination-sourced pipeline** — the peer mechanism, the heart of the model, is not firing.
+4. **Two or more Jury members quietly disengage or decline to renew** — the people closest to the standard don't believe in it; find out why before spending another month.
+
+Pivot options to have pre-thought, not pre-decided: narrow to a single vertical (e.g. cybersecurity SEs), lead with the comp data product to build the register behind it, or lead with 2–3 lighthouse searches and build the register from the searches instead of ahead of them.
+
+### 7.5 What is explicitly not a kill signal in months 0–3
+
+Zero revenue. No client searches. Slow weeks in July. A rejected candidate complaining. The Founding 100 is an asset-building phase; the only currencies that count are members, nominations, comp records and the Jury's continued conviction.
+
+---
+
+*Kingmaker — where the best are proven.*
+</script>
+<script src="marked.min.js"></script>
+<script>
+  var src = document.getElementById("src").textContent;
+  document.getElementById("md").innerHTML = marked.parse(src, { mangle: false, headerIds: false });
+</script>
+</html>

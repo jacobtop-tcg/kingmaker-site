@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<title>The Kingmaker Standard</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,300..800&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Spline+Sans+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --ink: #171c30; --muted: #565f7d; --faint: #8a92ad;
+    --line: #dcdfeb; --cobalt: #2447e0; --gold: #b57b12; --gold-soft: rgba(181,123,18,0.1);
+    --display: "Bricolage Grotesque", "Avenir Next", "Helvetica Neue", sans-serif;
+    --body: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --mono: "Spline Sans Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg:#0a0e1e; --surface:#121732; --ink:#e8ecfa; --muted:#9aa5c9; --faint:#66719a; --line:#262e52; --cobalt:#6d87ff; --gold:#f0b03f; --gold-soft:rgba(240,176,63,0.1); }
+  }
+  :root[data-theme="dark"] { --bg:#0a0e1e; --surface:#121732; --ink:#e8ecfa; --muted:#9aa5c9; --faint:#66719a; --line:#262e52; --cobalt:#6d87ff; --gold:#f0b03f; --gold-soft:rgba(240,176,63,0.1); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.68; -webkit-font-smoothing:antialiased; }
+  .page { max-width:860px; margin:0 auto; padding:clamp(28px,5vw,64px) clamp(18px,4vw,40px) 80px; }
+  .masthead { display:flex; align-items:center; gap:12px; margin-bottom:30px; }
+  .masthead .brand { font-family:var(--display); font-weight:700; letter-spacing:0.18em; text-transform:uppercase; font-size:0.9rem; }
+  .masthead .doc { margin-left:auto; font-family:var(--mono); font-size:0.64rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--faint); text-align:right; }
+  .masthead a { color:inherit; text-decoration:none; }
+  #md h1 { font-family:var(--display); font-size:clamp(1.7rem,4vw,2.4rem); font-weight:680; line-height:1.12; margin:10px 0 14px; letter-spacing:-0.01em; }
+  #md h2 { font-family:var(--display); font-size:1.35rem; font-weight:660; margin:40px 0 10px; }
+  #md h3 { font-size:1.02rem; font-weight:700; margin:26px 0 8px; }
+  #md p { color:var(--muted); max-width:72ch; margin:10px 0; }
+  #md strong { color:var(--ink); }
+  #md a { color:var(--cobalt); }
+  #md ul, #md ol { margin:10px 0 10px 1.3em; color:var(--muted); max-width:70ch; }
+  #md li { margin:5px 0; }
+  #md blockquote { border-left:3px solid var(--gold); background:var(--gold-soft); padding:12px 18px; margin:14px 0; }
+  #md blockquote p { color:var(--ink); }
+  #md code { font-family:var(--mono); font-size:0.85em; background:var(--surface); border:1px solid var(--line); padding:1px 5px; }
+  #md pre { background:var(--surface); border:1px solid var(--line); padding:14px 18px; overflow-x:auto; margin:14px 0; }
+  #md pre code { border:none; padding:0; }
+  #md table { border-collapse:collapse; margin:14px 0; font-size:0.86rem; width:100%; display:block; overflow-x:auto; }
+  #md th { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--faint); text-align:left; padding:8px 12px; border-bottom:1px solid var(--line); white-space:nowrap; }
+  #md td { padding:9px 12px; border-bottom:1px solid var(--line); color:var(--muted); vertical-align:top; }
+  #md hr { border:none; border-top:1px solid var(--line); margin:34px 0; }
+  footer { margin-top:56px; padding-top:16px; border-top:1px solid var(--line); font-family:var(--mono); font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--faint); }
+</style>
+<div class="page">
+  <div class="masthead"><svg width="24" height="20" viewBox="0 0 28 24" fill="none" aria-hidden="true"><path d="M2 21 L2 7 L9 13 L14 2 L19 13 L26 7 L26 21 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" style="color: var(--gold);"/></svg><a class="brand" href="index.html">Kingmaker</a><span class="doc"><a href="index.html">Partner pack</a><br>Working document</span></div>
+  <div id="md"><noscript><p>Enable JavaScript to render this document.</p></noscript></div>
+  <footer>Shared for collaboration between the founders. Not for redistribution.</footer>
+</div>
+<script type="text/markdown" id="src"># The Kingmaker SE-Org Standard
+
+**A scored diagnostic of Sales Engineering organisation health.**
+Version 1.0 — Copenhagen, August 2026. Owner: Founder. Review: quarterly, or at n≥50 company assessments.
+
+---
+
+## 1. What this is and why it exists
+
+Kingmaker proves candidates before it represents them. The SE-Org Standard applies the same discipline to the other side of the introduction: before we put a proven engineer in front of an employer, we score the employer.
+
+Three principles govern its use:
+
+1. **It is a diagnostic, not a gate.** A low score does not stop us working a search. It changes the conversation — with the client (advisory) and with the candidate (disclosure). The only thing a score gates is the public **Kingmaker-endorsed employer** badge.
+2. **Every introduction carries the score.** No candidate meets a client without seeing the org's score and a one-paragraph gap summary. This is a structural commitment under the Candidate Charter, with the same named remedy as fee-motivated steering.
+3. **Evidence over assertion.** Every dimension has a verification method. A hiring manager's claim scores at the midpoint until documented; artefacts move the score, adjectives do not.
+
+The Standard doubles as our company-side data engine. Every intake interview (Section 5) captures the same structured fields, feeding the benchmark that backs the European SE Compensation Snapshot and, at n≥400, full benchmark authority.
+
+---
+
+## 2. The ten dimensions
+
+Each dimension scores 0–10 against the anchors below. Score conservatively: if evidence is refused or unavailable, cap the dimension at 5.
+
+### D1. AE:SE ratio — *weight 12*
+
+**Why.** Coverage ratio is the single best structural predictor of SE burnout (~30% industry-wide) and demo quality. The market is compressing from the old 4:1 pattern toward roughly 3.4 AEs per SE; an org still running 6:1 is asking its SEs to triage, not sell.
+
+**Verify.** Org chart or headcount export; count quota-carrying AEs against customer-facing SEs (exclude SE managers who do not carry deals). Cross-check with the SE team in confidential references.
+
+| Score | Anchor |
+|---|---|
+| 9–10 | ≤3:1, with a stated staffing model that holds ratio through growth |
+| 6–8 | ≤4:1 sustained over the last two quarters |
+| 3–5 | 4:1 to 6:1, or ≤4:1 on paper but with unfilled SE requisitions doing the flattering |
+| 0–2 | >6:1, or leadership cannot state the ratio |
+
+### D2. Demo-qualification discipline — *weight 12*
+
+**Why.** An org where any AE can demand a demo for any prospect burns its SEs on unqualified traffic. The mark of a healthy org is that SEs are empowered — in writing, in the sales process — to disqualify or defer a technical engagement without escalation warfare.
+
+**Verify.** Ask for the qualification criteria that must be met before SE assignment (MEDDICC/MEDDPICC fields, discovery-call-first rules). Ask an SE, in reference calls: "When did you last decline a demo request, and what happened?"
+
+| Score | Anchor |
+|---|---|
+| 9–10 | Written gate before SE engagement; SEs disqualify routinely; leadership backs them with a named example |
+| 6–8 | Gate exists and is mostly respected; occasional AE override with manager sign-off |
+| 3–5 | Informal norms only; disqualification possible but career-limiting |
+| 0–2 | SEs are on-demand demo staff; no gate, no right of refusal |
+
+### D3. Compensation vs verified benchmark — *weight 15*
+
+**Why.** The heaviest-weighted dimension because it is the most common silent failure. We hold verified comp data from every candidate vetting interview; we compare the org's offer band against it directly, not against self-reported survey noise. Reference points: US median SE OTE $205k, senior $239k, AI/ML $263k, cybersecurity $255k; European bands per our Snapshot.
+
+**Verify.** Comp band for the open role (base, variable, equity), in writing, at intake. Position against Kingmaker verified data for the same market, seniority and domain. Note: until our European n≥400, position against the Snapshot with the sample size disclosed.
+
+| Score | Anchor |
+|---|---|
+| 9–10 | At or above 75th percentile of verified band for market/seniority/domain |
+| 6–8 | Between median and 75th percentile |
+| 3–5 | Between 25th percentile and median, or band withheld until offer stage |
+| 0–2 | Below 25th percentile, or "competitive" with no numbers |
+
+### D4. Retention and tenure of the SE team — *weight 12*
+
+**Why.** Tenure is the org telling the truth about itself. Referred hires stay 2.1x longer (CIPD 2025) partly because referrers pre-disclose the gaps; a team with median tenure under 18 months has gaps nobody disclosed.
+
+**Verify.** SE headcount and leavers over trailing 24 months (regretted vs non-regretted); median tenure of current team; tenure of the two most recent leavers and their stated reasons. Cross-check on LinkedIn — this dimension is unusually hard to bluff.
+
+| Score | Anchor |
+|---|---|
+| 9–10 | Median tenure ≥3 years; regretted attrition <10%/year |
+| 6–8 | Median tenure 2–3 years; regretted attrition 10–15% |
+| 3–5 | Median tenure 12–24 months, or a recent cluster of senior departures |
+| 0–2 | Median tenure <12 months, or leadership declines to share attrition |
+
+### D5. Dual IC / leadership career track — *weight 10*
+
+**Why.** The best SEs are frequently the ones who never want to manage. An org whose only promotion path is people-management converts its strongest technical sellers into mediocre managers or ex-employees. A real Principal/Staff SE track — with comp parity to the management line — is the tell.
+
+**Verify.** Levelling document showing the IC ladder above Senior SE; name of at least one person currently at Principal/Staff level; comp bands for Principal SE vs SE Manager.
+
+| Score | Anchor |
+|---|---|
+| 9–10 | Published dual ladder, occupied Principal/Staff seats, comp parity with management at level |
+| 6–8 | Ladder exists on paper and at least one person is on it |
+| 3–5 | "We're working on it" — ladder drafted, nobody promoted onto it |
+| 0–2 | Management is the only path up |
+
+### D6. SE-experienced leadership in the chain — *weight 10*
+
+**Why.** An SE team reporting through leaders who have never carried a technical win tends to be measured on activity, not outcomes. Somewhere between the SE and the CRO there should be someone who has personally run a POC.
+
+**Verify.** Reporting line from IC SE to executive; backgrounds of each link. One former-SE (or former solutions/FDE) leader anywhere in the chain clears the bar; direct manager is best.
+
+| Score | Anchor |
+|---|---|
+| 9–10 | Direct manager is a former practising SE; SE org has its own seat at revenue leadership |
+| 6–8 | SE-experienced leadership within two levels |
+| 3–5 | SEs report into sales management with no SE background, but with a dotted technical line |
+| 0–2 | No SE experience anywhere in the chain; SEs report to AE managers |
+
+### D7. Quota and variable fairness — *weight 10*
+
+**Why.** The structure of variable pay tells an SE exactly what the org thinks they are. Healthy pattern: 70/30-to-80/20 base/variable, paid on team or territory attainment (SEs influence deals; they do not control them), with clear accelerators and no clawback surprises.
+
+**Verify.** The SE comp plan document — not a description of it. Check split, measurement basis (team vs individual vs corporate), payout curve, and whether the plan changed mid-year in the last two years.
+
+| Score | Anchor |
+|---|---|
+| 9–10 | 70/30–80/20 split; team/territory-based; plan stable; paid quarterly with transparent maths |
+| 6–8 | Sane split, minor design flaws (annual cliff, opaque splits on overlays) |
+| 3–5 | Individual deal-commission model for SEs, or plan rewritten mid-year |
+| 0–2 | 50/50 or worse, individually gated, or discretionary "bonus" with no plan document |
+
+### D8. President's Club eligibility for SEs — *weight 7*
+
+**Why.** A small dimension with outsized signalling value. If the technical winners of the deal are not eligible for the winners' trip, the org has told you who it thinks won the deal. Cheap to fix, and diagnostic precisely because it is cheap.
+
+**Verify.** Club criteria document or last year's attendee policy. Ask: how many SEs attended the most recent Club, and on what basis (earned quota-based place vs manager's discretionary invite)?
+
+| Score | Anchor |
+|---|---|
+| 9–10 | SEs earn Club on the same published basis as AEs; SEs attended last year |
+| 6–8 | Fixed SE allocation (e.g. top 10% of SE org) with transparent criteria |
+| 3–5 | Discretionary invites only |
+| 0–2 | SEs not eligible |
+
+### D9. Travel load honesty — *weight 6*
+
+**Why.** We do not score the travel load itself — some great roles are 60% travel. We score whether the org states it accurately. Misrepresented travel is a top-three reason SE hires fail in year one, and it is the discrepancy candidates most often report back to us.
+
+**Verify.** Stated travel % at intake, in writing. Cross-check against expense/trip data if offered, and against current-team references ("how many nights away last quarter?"). Score the gap between stated and actual.
+
+| Score | Anchor |
+|---|---|
+| 9–10 | Stated in writing with a trailing-quarter figure to back it; matches team references |
+| 6–8 | Honest range given; minor variance vs references (±10 points) |
+| 3–5 | Vague ("some travel"), or stated figure 10–25 points below reality |
+| 0–2 | Materially misstated, or refuses to state |
+
+### D10. Tooling and demo-infrastructure investment — *weight 6*
+
+**Why.** An SE without a maintained demo environment rebuilds one at 23:00 before every call. Investment in demo infrastructure, POC environments and presales tooling (demo automation, environment management, a POC tracking system) is the org paying for the technical win rather than extracting it from goodwill.
+
+**Verify.** Ask what an SE opens to run a first demo: shared maintained environment, per-SE spin-up, or "we use the AE's trial account". Named tooling and budget line beats a claim of "great tooling".
+
+| Score | Anchor |
+|---|---|
+| 9–10 | Dedicated demo/POC infrastructure with an owner and a budget; presales tooling in place |
+| 6–8 | Maintained shared demo environment; POCs tracked; tooling partially funded |
+| 3–5 | SEs build and maintain their own environments on the side |
+| 0–2 | No demo environment; production or trial accounts used for demos |
+
+---
+
+## 3. Scoring sheet
+
+Score each dimension 0–10, multiply by its weight, sum, divide by 10. Result is 0–100.
+
+| # | Dimension | Weight | Score (0–10) | Weighted |
+|---|---|---:|---:|---:|
+| D1 | AE:SE ratio | 12 | | |
+| D2 | Demo-qualification discipline | 12 | | |
+| D3 | Comp vs verified benchmark | 15 | | |
+| D4 | Retention and tenure | 12 | | |
+| D5 | Dual IC/leadership track | 10 | | |
+| D6 | SE-experienced leadership | 10 | | |
+| D7 | Quota/variable fairness | 10 | | |
+| D8 | President's Club eligibility | 7 | | |
+| D9 | Travel load honesty | 6 | | |
+| D10 | Tooling investment | 6 | | |
+| | **Total** | **100** | | **/100** |
+
+### Bands
+
+| Band | Score | Meaning | What we do |
+|---|---|---|---|
+| **Endorsed** | 80–100 | Eligible for the public **Kingmaker-endorsed employer** badge | Badge granted if floor rules pass; score shown to candidates as a strength |
+| **Works, with caveats** | 60–79 | Sound org with named gaps | We run the search; gaps disclosed verbatim to every candidate introduced |
+| **Advisory** | below 60 | Structural problems that will cost them the hire or the hire's second year | Advisory conversation before or alongside the search; full disclosure to candidates; remediation offer (Section 6) |
+
+### Floor rules (badge only)
+
+The badge additionally requires: no dimension below 4; D3 (comp) at 6 or above; D9 (travel honesty) at 6 or above. A 82-point org paying below-median comp is not an endorsed employer.
+
+### Validity and re-scoring
+
+- A score is valid for **12 months** or until a material change (new sales leadership, layoff touching the SE org, comp plan rewrite), whichever comes first.
+- Re-scoring is free within a live search; otherwise part of a remediation engagement.
+- Scores never round up. 79 is 79.
+
+---
+
+## 4. The disclosure rule
+
+This is the part clients will push on. It does not bend.
+
+1. **Every candidate introduction includes the org's total score, band, and a gap summary** — three to five sentences naming the lowest-scoring dimensions in plain language. It travels with the k-anonymised role brief, before the candidate agrees to reveal.
+2. **A failing score is not a revenue gate.** We will represent candidates into a 55-point org — some candidates want turnaround roles, and the Charter promises approaches above their stated bar, informed, not filtered by our judgement of their tolerance.
+3. **What is gated is the badge, and only the badge.** No public endorsement below 80. No exceptions for fee size, logo value or founder relationships.
+4. **Clients see their own score and gap summary before the first introduction**, so nothing a candidate reads is a surprise to them. Clients do not see other clients' scores.
+5. **Misstating a score to a candidate carries the Charter's named remedy**, identical to fee-motivated steering.
+
+**Gap summary format (example):**
+
+> *Org score 68 — works, with caveats.* Coverage runs at roughly 5 AEs per SE with two open SE requisitions (D1: 4). Variable is 60/40 and paid on individual deal attachment (D7: 4). Comp sits at the verified market median for senior SE in this domain (D3: 6). Career track, leadership chain and travel disclosure all score 7 or above. The two caveats are workload structure and pay-mix design, not culture or leadership.
+
+---
+
+## 5. The diagnostic interview — hiring-manager intake script
+
+Run at every search intake, ~50 minutes, before terms are signed where possible. Framing sentence, delivered straight:
+
+> "Before we approach anyone on the register, we score your SE organisation on ten dimensions. Every candidate we introduce sees the score. Most clients land between 60 and 80; the point is to know your gaps before your candidates do. It also means the search brief writes itself."
+
+Capture every field below into the company-benchmark record at the time of the call. Do not backfill from memory.
+
+### Block A — Structure (D1, D6) — 8 min
+
+| Ask | Capture |
+|---|---|
+| "Walk me through the revenue org from IC SE up to the CRO — names and backgrounds." | Reporting chain; SE-experienced links (Y/N per level) |
+| "How many quota-carrying AEs, how many customer-facing SEs, today — and open reqs on each side?" | AE count, SE count, open reqs, computed ratio |
+| "What was that ratio a year ago?" | Trailing ratio; direction of travel |
+
+### Block B — How SEs spend their days (D2, D9, D10) — 10 min
+
+| Ask | Capture |
+|---|---|
+| "What has to be true before an SE is assigned to an opportunity?" | Qualification gate (written/informal/none) |
+| "Tell me about the last time an SE declined or deferred a demo. What happened next?" | Disqualification empowerment (anecdote quality) |
+| "What does an SE open to run a first demo?" | Demo environment model; named tooling |
+| "What was the actual travel percentage for your SEs last quarter — nights away, not the job-ad number?" | Stated travel %, basis for the figure |
+
+### Block C — Money (D3, D7, D8) — 12 min
+
+| Ask | Capture |
+|---|---|
+| "Base and OTE band for this role, and the split." | Base band, OTE band, split, currency |
+| "Is variable paid on team, territory or individual attainment — and can you send me the plan document?" | Measurement basis; plan doc (received Y/N) |
+| "Has the SE comp plan changed in the last 24 months? How?" | Plan stability |
+| "Who from the SE team went to Club last year, and how did they qualify?" | Club eligibility model; SE attendees |
+| "Equity: band and vesting for this level?" | Equity terms |
+
+### Block D — People (D4, D5) — 12 min
+
+| Ask | Capture |
+|---|---|
+| "How many SEs have left in the last 24 months, and how many of those did you fight to keep?" | Leavers, regretted count |
+| "Median tenure of the current team?" | Median tenure |
+| "Where did your last two SE leavers go, and why, in their words?" | Departure destinations/reasons |
+| "What is the most senior individual-contributor SE title here, and who holds it?" | IC ladder ceiling; occupied Y/N |
+| "If your best SE told you tomorrow they never want to manage people, what happens to their career and their pay?" | Dual-track reality check |
+
+### Block E — Close — 5 min
+
+- "Anything about this org a strong candidate would find out in month three that we should discuss now?" *(capture verbatim — this answer frequently moves D9 or D4)*
+- Request artefacts within one week: org chart, SE comp plan, levelling doc, Club criteria. Log what arrives; **unverified claims cap at 5** per Section 2.
+- State the next step: "You'll have your score and gap summary in writing before the first introduction."
+
+**Benchmark note.** Blocks A and C are the company-side twin of the candidate-side comp capture. Fields feed the same dataset that produces the European SE Compensation Snapshot; company identities are held to the same k-anonymity rule (attribute combinations must map to ≥5 plausible companies) in anything published.
+
+---
+
+## 6. Publishing the Standard — the Michelin position
+
+Michelin sells tyres; the Guide makes chefs reorganise kitchens to earn a star. The Standard is our Guide: published criteria, private scores, coveted badge.
+
+### What is public
+
+| Asset | Content | Cadence |
+|---|---|---|
+| **The Standard itself** | The ten dimensions, anchors, weights, bands — this document, near-verbatim | Permanent page; versioned |
+| **State of the SE Org** report | Aggregate distributions only: median scores per dimension, band distribution, year-on-year movement. Minimum n=25 companies before first publication | Annual |
+| **Endorsed-employer badge** | Company name, badge, score band (not the number), validity date | Rolling |
+| **Dimension essays** | One short piece per dimension (e.g. "Why Club eligibility predicts SE tenure"), each anchored in our data | Monthly-ish, as data allows |
+
+### What is never public
+
+Individual company scores, gap summaries, or the fact that a company was assessed and fell short. A company below 80 simply has no badge; silence is the sanction. This is what makes the badge worth pursuing and the assessment safe to accept.
+
+### How it sells
+
+- Publishing the criteria means every SE in Europe can score their own employer in ten minutes. That is deliberate: it recruits the register, seeds nominations, and makes hiring managers ask us for a formal score.
+- The badge goes on the client's careers page and our register. Lighthouse clients who trade a named case study may pair it with the case study.
+- Claim only what the data supports: "based on n structured assessments" until n≥400 on the comp dimension, per the benchmark rule.
+
+### The remediation advisory
+
+A sub-60 or 60–79 score converts naturally into paid work. The offer, made once, without pressure, at score delivery:
+
+| Element | Terms |
+|---|---|
+| Scope | Fix the two or three lowest-scoring dimensions; typically comp-plan redesign (D7), IC ladder construction (D5), qualification gate (D2) |
+| Format | Fixed-fee advisory, 4–6 weeks, written recommendations plus one implementation review; delivered by Kingmaker or a named Fellow-tier practitioner |
+| Price | Anchor to the engagement-fee tier (€7.5–10k); scale with org size |
+| Re-score | Included, no earlier than one full quarter after implementation |
+| Independence rule | Remediation never buys points. The re-score uses the same anchors, same evidence bar, and is performed as if the advisory had not happened. Say this in the proposal, in writing — it is why the badge stays credible |
+
+The advisory is also the honest answer to a hard moment: a 52-point org asking why their offer was declined again. The Standard means we can show them, dimension by dimension, and charge for the fix rather than apologise for the market.
+
+---
+
+*Kingmaker — where the best are proven. Scores are evidence, not opinion; when we cannot verify, we say so, and score accordingly.*
+</script>
+<script src="marked.min.js"></script>
+<script>
+  var src = document.getElementById("src").textContent;
+  document.getElementById("md").innerHTML = marked.parse(src, { mangle: false, headerIds: false });
+</script>
+</html>

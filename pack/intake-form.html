@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<title>The Intake Form</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,300..800&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Spline+Sans+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --ink: #171c30; --muted: #565f7d; --faint: #8a92ad;
+    --line: #dcdfeb; --cobalt: #2447e0; --gold: #b57b12; --gold-soft: rgba(181,123,18,0.1);
+    --display: "Bricolage Grotesque", "Avenir Next", "Helvetica Neue", sans-serif;
+    --body: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --mono: "Spline Sans Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg:#0a0e1e; --surface:#121732; --ink:#e8ecfa; --muted:#9aa5c9; --faint:#66719a; --line:#262e52; --cobalt:#6d87ff; --gold:#f0b03f; --gold-soft:rgba(240,176,63,0.1); }
+  }
+  :root[data-theme="dark"] { --bg:#0a0e1e; --surface:#121732; --ink:#e8ecfa; --muted:#9aa5c9; --faint:#66719a; --line:#262e52; --cobalt:#6d87ff; --gold:#f0b03f; --gold-soft:rgba(240,176,63,0.1); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.68; -webkit-font-smoothing:antialiased; }
+  .page { max-width:860px; margin:0 auto; padding:clamp(28px,5vw,64px) clamp(18px,4vw,40px) 80px; }
+  .masthead { display:flex; align-items:center; gap:12px; margin-bottom:30px; }
+  .masthead .brand { font-family:var(--display); font-weight:700; letter-spacing:0.18em; text-transform:uppercase; font-size:0.9rem; }
+  .masthead .doc { margin-left:auto; font-family:var(--mono); font-size:0.64rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--faint); text-align:right; }
+  .masthead a { color:inherit; text-decoration:none; }
+  #md h1 { font-family:var(--display); font-size:clamp(1.7rem,4vw,2.4rem); font-weight:680; line-height:1.12; margin:10px 0 14px; letter-spacing:-0.01em; }
+  #md h2 { font-family:var(--display); font-size:1.35rem; font-weight:660; margin:40px 0 10px; }
+  #md h3 { font-size:1.02rem; font-weight:700; margin:26px 0 8px; }
+  #md p { color:var(--muted); max-width:72ch; margin:10px 0; }
+  #md strong { color:var(--ink); }
+  #md a { color:var(--cobalt); }
+  #md ul, #md ol { margin:10px 0 10px 1.3em; color:var(--muted); max-width:70ch; }
+  #md li { margin:5px 0; }
+  #md blockquote { border-left:3px solid var(--gold); background:var(--gold-soft); padding:12px 18px; margin:14px 0; }
+  #md blockquote p { color:var(--ink); }
+  #md code { font-family:var(--mono); font-size:0.85em; background:var(--surface); border:1px solid var(--line); padding:1px 5px; }
+  #md pre { background:var(--surface); border:1px solid var(--line); padding:14px 18px; overflow-x:auto; margin:14px 0; }
+  #md pre code { border:none; padding:0; }
+  #md table { border-collapse:collapse; margin:14px 0; font-size:0.86rem; width:100%; display:block; overflow-x:auto; }
+  #md th { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--faint); text-align:left; padding:8px 12px; border-bottom:1px solid var(--line); white-space:nowrap; }
+  #md td { padding:9px 12px; border-bottom:1px solid var(--line); color:var(--muted); vertical-align:top; }
+  #md hr { border:none; border-top:1px solid var(--line); margin:34px 0; }
+  footer { margin-top:56px; padding-top:16px; border-top:1px solid var(--line); font-family:var(--mono); font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--faint); }
+</style>
+<div class="page">
+  <div class="masthead"><svg width="24" height="20" viewBox="0 0 28 24" fill="none" aria-hidden="true"><path d="M2 21 L2 7 L9 13 L14 2 L19 13 L26 7 L26 21 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" style="color: var(--gold);"/></svg><a class="brand" href="index.html">Kingmaker</a><span class="doc"><a href="index.html">Partner pack</a><br>Working document</span></div>
+  <div id="md"><noscript><p>Enable JavaScript to render this document.</p></noscript></div>
+  <footer>Shared for collaboration between the founders. Not for redistribution.</footer>
+</div>
+<script type="text/markdown" id="src"># The Kingmaker intake form (v0.1 — the founders' working parameter set)
+
+**Status: living document, owned by both founders.** Daniel's principle governs it: engineers are vetted against the parameters *we* decide actually matter. Strike, add, and reweight together as the pool teaches you; the engine follows whatever the two of you land on.
+
+The "detailed form" for the pool-first phase: everything the house needs to know an engineer properly, mapped one-to-one to the register engine and the vetting rubric. Use it three ways: as the founders' interview sheet during the structured hour, as a form the engineer fills before or after the conversation (copy the questions into a Google Form or send this document), or as the checklist for `add-engineer` + `vet`. Everything self-reported is labeled **attested** in the dataset until a document is seen; nothing here is an exam.
+
+Fields marked → map directly to engine flags.
+
+---
+
+## 1. Who you are
+
+- Full name → `--name`
+- Email and phone → `--email`
+- LinkedIn URL
+- Base city and country
+- Languages you sell in
+
+## 2. The work
+
+- Current title and company (held confidentially; your employer goes straight onto your blocklist if you wish)
+- Role band (pick the closest): Sales Engineer / Senior SE / Principal or Staff SE / Solutions Consultant / Solutions Architect / Forward Deployed Engineer / SE Manager / Head or Director / VP → `--role-band`
+- Segment you know best (e.g. enterprise SaaS, cybersecurity, infrastructure, data/AI platforms) → `--segment`
+- Market you work (e.g. Northern Europe, DACH, UK, US remote) → `--market`
+- Years in customer-facing engineering
+- Internal track (founders fill, never shown publicly): core / senior / fde → `--track`
+
+## 3. The evidence (this is the dossier's raw material)
+
+- One technical win you are proud of: the deal, what tipped it, and your part in it, in five sentences
+- Who can vouch for it: an AE or a customer we may call (name + relationship) → `vet --reference`
+- Attainment: how you have performed against plan the last 2-3 years (President's Club, awards, percentiles; documents only if and when it benefits you) → `vet --attainment`
+- Anything public that shows the craft (a talk, a certification, a community role)
+
+## 4. The compensation instrument (attested until a document is seen)
+
+- Current base → `vet --base`
+- Current OTE at 100% attainment → `vet --ote`
+- Currency → `vet --currency`
+- Equity or other material comp, in your own words → `vet --equity`
+- AE:SE ratio where you work → `vet --ratio`
+- Demo/presales tooling you rate or hate → `vet --tooling`
+
+## 5. Your bar (the Charter's enforcement data: we never approach below it)
+
+- Compensation floor for even hearing about a role → `--comp-floor` + currency
+- Titles or scope you would move for
+- Segments you want, segments you are done with
+- Travel ceiling (days per month)
+- IC or leadership, or either
+- Companies that must never learn of you → `block --company`, one per line
+- How you want to be contacted, and how often is too often
+
+## 6. Consents (GDPR, plain terms)
+
+- [ ] I consent to Kingmaker holding the data above for the life of my representation (erasable in full, any time)
+- [ ] My name may appear on the consented founding roll (optional)
+- [ ] Contact me about the Register's compensation aggregates when they publish (optional)
+
+## 7. The founders' sheet (never sent to the engineer)
+
+- Rubric 1-5, whole numbers, quote-backed at 4+: discovery / technical credibility / storytelling / objection handling / commercial awareness → `vet --scores d,t,s,o,c`
+- Nominated by → `nominate --by`
+- Admission thresholds (provisional, for joint revision): no dimension below 3, mean 3.4+. Below threshold: status stays vetting, and that is never communicated as a rejection.
+
+---
+
+**Engine round trip for a completed form:**
+
+```bash
+node scripts/kingmaker.mjs add-engineer --name "..." --role-band "..." --segment "..." --market "..." --track senior --comp-floor 150000
+node scripts/kingmaker.mjs block --engineer <id> --company "Current Employer A/S"
+node scripts/kingmaker.mjs vet --engineer <id> --scores 4,4,5,3,4 --base 105000 --ote 150000 --ratio 1:3 --reference "AE name, the deal" --attainment "Club FY24, FY25"
+```
+</script>
+<script src="marked.min.js"></script>
+<script>
+  var src = document.getElementById("src").textContent;
+  document.getElementById("md").innerHTML = marked.parse(src, { mangle: false, headerIds: false });
+</script>
+</html>

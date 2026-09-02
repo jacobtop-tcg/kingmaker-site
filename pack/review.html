@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<title>Kingmaker Sharpening Review</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,300..800&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Spline+Sans+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --ink: #171c30; --muted: #565f7d; --faint: #8a92ad;
+    --line: #dcdfeb; --cobalt: #2447e0; --gold: #b57b12;
+    --gold-soft: rgba(181, 123, 18, 0.1); --cobalt-soft: rgba(36, 71, 224, 0.07);
+    --crit: #b3261e; --crit-soft: rgba(179, 38, 30, 0.08);
+    --display: "Bricolage Grotesque", "Avenir Next", "Helvetica Neue", sans-serif;
+    --body: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --mono: "Spline Sans Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0a0e1e; --surface: #121732; --ink: #e8ecfa; --muted: #9aa5c9; --faint: #66719a;
+      --line: #262e52; --cobalt: #6d87ff; --gold: #f0b03f;
+      --gold-soft: rgba(240, 176, 63, 0.1); --cobalt-soft: rgba(109, 135, 255, 0.08);
+      --crit: #ff7a70; --crit-soft: rgba(255, 122, 112, 0.1);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0e1e; --surface: #121732; --ink: #e8ecfa; --muted: #9aa5c9; --faint: #66719a;
+    --line: #262e52; --cobalt: #6d87ff; --gold: #f0b03f;
+    --gold-soft: rgba(240, 176, 63, 0.1); --cobalt-soft: rgba(109, 135, 255, 0.08);
+    --crit: #ff7a70; --crit-soft: rgba(255, 122, 112, 0.1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  .page { max-width: 880px; margin: 0 auto; padding: clamp(28px, 6vw, 72px) clamp(18px, 4vw, 40px) 80px; }
+
+  .masthead { display: flex; align-items: center; gap: 12px; margin-bottom: 34px; }
+  .masthead .brand { font-family: var(--display); font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; font-size: 0.9rem; }
+  .masthead .doc { margin-left: auto; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); text-align: right; }
+
+  h1 { font-family: var(--display); font-size: clamp(1.9rem, 4.6vw, 2.8rem); font-weight: 680; line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance; max-width: 24ch; }
+  .lede { margin-top: 16px; font-size: 1.05rem; color: var(--muted); max-width: 66ch; }
+  .lede strong { color: var(--ink); }
+
+  section { margin-top: 54px; }
+  h2 { font-family: var(--display); font-size: 1.45rem; font-weight: 660; margin-bottom: 14px; text-wrap: balance; }
+  p { color: var(--muted); max-width: 70ch; }
+  p strong { color: var(--ink); }
+
+  .panel { margin-top: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .lens { background: var(--surface); border: 1px solid var(--line); padding: 16px 18px; }
+  .lens .who { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: flex; justify-content: space-between; gap: 8px; }
+  .lens .who i { font-style: normal; color: var(--faint); }
+  .lens p { font-size: 0.85rem; margin-top: 8px; }
+  @media (max-width: 680px) { .panel { grid-template-columns: 1fr; } }
+
+  .moves { margin-top: 14px; display: grid; gap: 12px; }
+  .move { border-left: 3px solid var(--gold); background: var(--gold-soft); padding: 14px 18px; }
+  .move .k { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 4px; }
+  .move p { color: var(--ink); font-size: 0.95rem; }
+
+  .item { border: 1px solid var(--line); background: var(--surface); padding: 18px 20px; margin-top: 12px; }
+  .item .head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .item .n { font-family: var(--display); font-weight: 700; color: var(--cobalt); }
+  .item h3 { font-size: 1rem; font-weight: 700; }
+  .item .lenses { margin-left: auto; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; color: var(--faint); text-transform: uppercase; }
+  .item .prob { margin-top: 8px; font-size: 0.9rem; }
+  .item .fix { margin-top: 10px; font-size: 0.9rem; border-left: 3px solid var(--cobalt); background: var(--cobalt-soft); padding: 10px 14px; color: var(--ink); max-width: none; }
+  .item .fix b { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cobalt); display: block; margin-bottom: 4px; }
+
+  ul.plain { margin: 12px 0 0 1.1em; color: var(--muted); max-width: 68ch; display: grid; gap: 8px; }
+  ul.plain li strong { color: var(--ink); }
+
+  .done { border-left: 3px solid var(--gold); background: var(--gold-soft); padding: 14px 18px; margin-top: 14px; }
+  .done p { color: var(--ink); font-size: 0.93rem; }
+
+  .decisions { margin-top: 14px; counter-reset: dec; display: grid; gap: 10px; }
+  .decision { background: var(--surface); border: 1px solid var(--line); padding: 14px 18px 14px 52px; position: relative; font-size: 0.93rem; color: var(--muted); }
+  .decision::before { counter-increment: dec; content: counter(dec); position: absolute; left: 18px; top: 12px; font-family: var(--display); font-weight: 700; font-size: 1.2rem; color: var(--gold); }
+  .decision strong { color: var(--ink); }
+
+  footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line); font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+</style>
+
+<div class="page">
+  <div class="masthead">
+    <svg width="26" height="22" viewBox="0 0 28 24" fill="none" aria-hidden="true">
+      <path d="M2 21 L2 7 L9 13 L14 2 L19 13 L26 7 L26 21 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" style="color: var(--gold);"/>
+    </svg>
+    <span class="brand">Kingmaker</span>
+    <span class="doc">Sharpening review<br>Six adversarial lenses · 2026-08-31</span>
+  </div>
+
+  <h1>Where the concept must get sharper, and where it must be said sharper.</h1>
+  <p class="lede">Six persona reviewers (a CRO buyer, a cynical Principal SE, a 25-year search veteran, a brand strategist, a conversion copywriter, a skeptical investor) read the live site, the blueprint, the pricing terms, the Charter, and the outreach playbook, then a synthesis ruled on their conflicts. <strong>Verdict: the concept is sharper than the average funded category play. What is dull is the seam between documents, and the gap between claims and inspectable proof.</strong> Almost every fix required is already written somewhere internally; it needs finishing, not inventing.</p>
+
+  <section>
+    <h2>The panel</h2>
+    <div class="panel">
+      <div class="lens"><span class="who">CRO buyer <i>3 critical · 5 important</i></span><p>Understands the offer in ten seconds and finds the 1+1 card attractively simple, provided the site says why the price is low. What stops the email: no process after the click, no confidentiality promise on the org score, and one stat-theater line a skeptic can catch.</p></div>
+      <div class="lens"><span class="who">Principal SE <i>2 critical · 5 important</i></span><p>Clears the bar almost no recruitment page clears: the manifesto is true about the job and the scorecard proves lived presales knowledge. Wants the Charter itself, the named agent, and the specimen approach message before sending anything.</p></div>
+      <div class="lens"><span class="who">Search veteran <i>2 critical · 7 important</i></span><p>Best candidate-side architecture seen at this scale, but two structural faults a veteran client finds in a fortnight: free-to-abandon exclusivity, and a surprise second invoice six months after anyone thought about Kingmaker.</p></div>
+      <div class="lens"><span class="who">Brand strategist <i>2 critical · 8 important</i></span><p>The naming spine (Kingmaker, Register, Standard, Report, Fellow) is 90 percent built and better than most funded plays. The kingmaker metaphor is dropped after the hero, and the page's one urgency device is shapeless.</p></div>
+      <div class="lens"><span class="who">Conversion <i>3 critical · 6 important</i></span><p>Persuades like an institution, converts like a brochure: every path ends at a bare mailto for a €25-40k decision, with the differentiated process invisible and zero honest proof density on the page.</p></div>
+      <div class="lens"><span class="who">Investor <i>3 critical · 5 important</i></span><p>The most honestly self-documented recruiting venture reviewed. Three gaps: the partnership exists only on the site, leadership pricing donates the scarcest founder hours, and the data moat is a slogan until counts are published.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The three moves that matter most</h2>
+    <div class="moves">
+      <div class="move"><span class="k">Today, before any dial</span><p>Purge the dead v1 rate card from the pitch machinery and fix the two site lines that contradicted the 1+1 card ("sharper terms", "replacement guarantee"). A CRO who read the site and then heard v1 terms on the first call would end the conversation. <strong>Done: applied and verified during this review.</strong></p></div>
+      <div class="move"><span class="k">This month</span><p>Put money and names where the claims are: a €5,000 commencement fee credited against the first month (prices abandonment, converts exclusivity from favor to purchase), three named jurors gating all Fellow language, and the partnership written down with Daniel owning the client side.</p></div>
+      <div class="move"><span class="k">Next sprint</span><p>Surface what already exists: the six-step search process, the signable Charter with its fee-forfeit verbatim, the named founding agent, the specimen approach message, honest live counts, and the three sentences currently internal-only (why the price is low, that the score is confidential, what the structured hour trades).</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Concept: where the model itself must sharpen</h2>
+
+    <div class="item"><div class="head"><span class="n">1</span><h3>Purge the v1 rate card everywhere</h3><span class="lenses">all six lenses</span></div>
+      <p class="prob">The outreach playbook still qualified and pitched on "20-22% of base, fee at accepted shortlist" and argued against the exact payment trigger the site promises; the contract skeleton carried ghost clauses ("engagement fee non-refundable"). Two prices in one pipeline reads as improvisation.</p>
+      <p class="fix"><b>Status</b>Repaired during this review: outreach economics row, objection blocks, agenda, demand-list terms, and clause 6.1.12 all rewritten to 1+1; a repo-wide search finds zero v1 remnants.</p></div>
+
+    <div class="item"><div class="head"><span class="n">2</span><h3>Price abandonment: €5,000 opens the search</h3><span class="lenses">veteran · investor · CRO</span></div>
+      <p class="prob">Under pure 1+1 a client can sign "exclusive", take the shortlist, and abandon at week six owing €0, against a self-modeled 40% non-completion rate and a cash curve where the first euro arrives months after signature. Free-to-breach exclusivity is contingency in retained clothing.</p>
+      <p class="fix"><b>Sharper</b>"€5,000 opens the search, credited in full against the first month." One sentence, invisible against a €24k+ fee, filters the never-serious, pulls first cash forward four months. Then own the remaining risk reversal loudly: "Beyond the €5,000 that opens the search, nothing is invoiced before your hire's start date."</p></div>
+
+    <div class="item"><div class="head"><span class="n">3</span><h3>Hard-gate all jury language on named jurors</h3><span class="lenses">CRO · SE · veteran · investor</span></div>
+      <p class="prob">The site sells "awarded by an independent jury of proven SE leaders" in the present tense while the jury does not exist, violating the blueprint's own cold-start rule. Ten minutes of diligence finds two LinkedIn profiles and an unfalsifiable register.</p>
+      <p class="fix"><b>Sharper</b>The Fellow tier publishes only when three or more jurors are named on the page. Until then: Represented alone, plus one dated, falsifiable line: "The first Fellows will be named by a jury of working SE leaders now being seated. Juror names publish before the first award does." Juror terms in writing: fixed honorarium, no equity, 24-month term, recusal rules.</p></div>
+
+    <div class="item"><div class="head"><span class="n">4</span><h3>Write the partnership down</h3><span class="lenses">investor</span></div>
+      <p class="prob">Daniel exists on the site and nowhere else: the blueprint says "founder" in the singular, the outreach doc says "one owner (Jacob)", every template signs Jacob. The 15-year search professional owns nothing on paper while the winnable first wave is Stockholm-heavy.</p>
+      <p class="fix"><b>Sharper</b>A blueprint section of five sentences: Daniel full-time from a date, owning the client side (named accounts, diagnostics, search execution) and Stockholm; Jacob owning the candidate side (Register, vetting, content, Jury) and Copenhagen; one named owner per document; both holding 12+ months runway. Re-voice the company-side scripts as Daniel's.</p></div>
+
+    <div class="item"><div class="head"><span class="n">5</span><h3>Leadership at 1.5 + 1.5, with 1+1 as the endorsed-employer privilege</h3><span class="lenses">investor · CRO</span></div>
+      <p class="prob">A US VP search at 1+1 bills about $70k where the market pays $126-139k, on searches that cost 2-3x the hours, in the year cash is thinnest. And the retained option is gated on references, so it cannot even be offered when a client asks for a classic structure.</p>
+      <p class="fix"><b>Sharper</b>Leadership default: "a month and a half when they start, a month and a half at six months" (about 25% of OTE, same one-sentence form). Reserve 1+1 as the privileged leadership rate for employers scoring 80+, which gives the Standard commercial teeth on day one. Un-gate retained thirds whenever a client requests confidentiality: a payment structure is not a track-record claim.</p></div>
+
+    <div class="item"><div class="head"><span class="n">6</span><h3>Installment 2 as a standing payable, not a surprise invoice</h3><span class="lenses">veteran</span></div>
+      <p class="prob">As drafted, the second invoice arrives six months after anyone thought about Kingmaker, often right after a re-org, from a firm with no leverage. The 90% survival target depends on this mechanism holding.</p>
+      <p class="fix"><b>Sharper</b>Issue both invoices at start date, the second dated anniversary + 14 days, defined as "earned in full at start, payable at six months, waived by credit note on voluntary resignation or cause". It sits in the client's AP system for six months; a waiver becomes a credit note against an existing invoice, the reverse of chasing a new one.</p></div>
+
+    <div class="item"><div class="head"><span class="n">7</span><h3>Two-tier the comp-data labels before someone asks</h3><span class="lenses">veteran · investor</span></div>
+      <p class="prob">The Charter says "offer-verified"; the funnel verifies documents only when it benefits the engineer. At n=100 most datapoints will be interview-attested, and one question collapses the moat's credibility.</p>
+      <p class="fix"><b>Sharper</b>Label every datapoint "document-verified" or "attested" and publish the split ("62 packages: 41 document-verified, 21 attested"). The engine already tracks the flag; the honesty IS the differentiation.</p></div>
+
+    <div class="item"><div class="head"><span class="n">8</span><h3>Give the Standard provenance; cut the arbiter-takes-money conflict</h3><span class="lenses">veteran</span></div>
+      <p class="prob">A score sourced from client self-report is shown to candidates as "the truth, disclosed", and the privileged rate is tied to a score Kingmaker itself assigns: the conflict Michelin exists to avoid.</p>
+      <p class="fix"><b>Sharper</b>Every candidate-facing scorecard carries "scored from declared data at intake; re-verified against outcomes". The 80+ mark requires three or more dimensions verified from independent evidence plus a re-score at the first placement's six-month mark. Publish the rubric and give clients a written appeal route.</p></div>
+
+    <div class="item"><div class="head"><span class="n">9</span><h3>An NDA-first path where k=5 arithmetically fails</h3><span class="lenses">veteran</span></div>
+      <p class="prob">At the very top of a small market the anonymity arithmetic fails by definition, and the coarsen-until-it-passes remedy deletes exactly the attributes that justify the fee.</p>
+      <p class="fix"><b>Sharper</b>A distinct, logged process state: where k cannot be met at a specificity worth sending, no anonymized dossier goes out at all; the flow is NDA first, then named reveal on the engineer's explicit per-company yes. Charter voice: "Sometimes the arithmetic fails. When it does, we tell you, and nothing moves without the NDA and your yes."</p></div>
+
+    <div class="item"><div class="head"><span class="n">10</span><h3>Cap the founding cohort and price the early risk</h3><span class="lenses">conversion · SE · investor</span></div>
+      <p class="prob">"There will only ever be one founding cohort" is the page's only urgency and it is shapeless: no size, no close condition, no stated privilege. A rational elite SE waits for year two, when joining is strictly safer.</p>
+      <p class="fix"><b>Sharper</b>"The founding cohort closes at one hundred names. Those names, with consent, form the founding roll, hold nomination rights into the first Fellow jury pool, and see every Report first, permanently." Early risk must buy something the year-three joiner can never buy.</p></div>
+  </section>
+
+  <section>
+    <h2>Communication: where it must be said sharper</h2>
+
+    <div class="item"><div class="head"><span class="n">1</span><h3>Fill the void after the click</h3><span class="lenses">CRO · conversion · brand</span></div>
+      <p class="prob">Every path ends at a bare mailto for a €25-40k decision, while the genuinely differentiated process (same-day inventory answer, 45-minute brief-as-diagnostic, 48-hour written go/no-go) sits invisible in a playbook.</p>
+      <p class="fix"><b>Rewrite</b>A numbered "How a search runs" strip in the engagements section: 1. Same day, an honest answer: does the Register plausibly hold your match. 2. Forty-five minutes: the brief, and your organization scored. 3. Forty-eight hours: your scores and a written go/no-go, from a founder. 4. Signed brief: shortlist in 7 days or 3-4 weeks, and you know which before you sign. 5. Start date: the first invoice. 6. Month six: the second, only if they stayed. Route the companies door there, not to the mailto.</p></div>
+
+    <div class="item"><div class="head"><span class="n">2</span><h3>Kill the lines that contradict the rate card</h3><span class="lenses">CRO · brand · conversion · investor</span></div>
+      <p class="prob">"Founding searches trade sharper terms" promised the discount the pricing doctrine bans; "a replacement guarantee" used the word the terms refuse.</p>
+      <p class="fix"><b>Status</b>Repaired during this review: the apply line now reads "Founding clients keep the 1+1 rate permanently; the trade is a named case study when it works", and the search cell now sells the real mechanism: "half the fee at risk until the hire has stayed six months."</p></div>
+
+    <div class="item"><div class="head"><span class="n">3</span><h3>Publish the Charter with its teeth</h3><span class="lenses">SE · CRO · veteran</span></div>
+      <p class="prob">The site invokes the Charter everywhere and links it nowhere. The fee-forfeit clause, the single most convincing sentence in the venture, is hidden in a markdown file.</p>
+      <p class="fix"><b>Rewrite</b>"Read the Charter" linking the signable document, and the forfeit verbatim on the page: "If a company you did not authorize ever learns of your search through our fault: you hear about it within 24 hours, we terminate that client engagement, and we forfeit the fee. That clause is in our client contracts."</p></div>
+
+    <div class="item"><div class="head"><span class="n">4</span><h3>Say the money argument out loud</h3><span class="lenses">CRO · veteran · conversion · brand</span></div>
+      <p class="prob">16.7% with no anchor reads as "what is wrong with them?" to a buyer who pays 25-33%. The answer exists internally and is never said on the page.</p>
+      <p class="fix"><b>Rewrite</b>Above the rate card: "Simple on purpose: half the fee is only earned once the hire has stayed six months. The price is our own vetting, bet on itself." And print the full waiver rule in the fine print, including that dismissal for cause also waives.</p></div>
+
+    <div class="item"><div class="head"><span class="n">5</span><h3>Replace stat-theater with checkable rules</h3><span class="lenses">five lenses</span></div>
+      <p class="prob">"We decline more searches than we accept" (zero searches run) and "this is exactly why the best candidates take our calls" (zero calls) are the two claims a skeptic catches on day one, violating the blueprint's own no-stat-theater rule.</p>
+      <p class="fix"><b>Rewrite</b>State the rule, not the ratio: "We take a search only when the Register plausibly holds the match or we can name the path to it, and we tell you which, the same day." Rename the engineers door "For the kingmakers": it self-selects harder than "top ten percent" and finally spends the name.</p></div>
+
+    <div class="item"><div class="head"><span class="n">6</span><h3>Name the agent; give Daniel checkable rows</h3><span class="lenses">SE · investor</span></div>
+      <p class="prob">"One named agent" stays an abstraction while the uncopyable fact (your agent carried the POC and made Club himself) sits five sections away. Daniel's dossier is adjectives next to Jacob's checkable rows.</p>
+      <p class="fix"><b>Rewrite</b>Charter row 1: "One named agent, and today that agent is a founder." Daniel's card gets one checkable number per row (searches closed, longest client relationship). If no number is available, that is a vetting problem to fix, not a copy problem.</p></div>
+
+    <div class="item"><div class="head"><span class="n">7</span><h3>Show the specimen approach message</h3><span class="lenses">SE</span></div>
+      <p class="prob">The engineer's real question is "what will you actually send me?" The site shows what companies see (the dossier) but never what the engineer sees.</p>
+      <p class="fix"><b>Rewrite</b>A second specimen card beside the dossier: "The only message we will ever send you", a redacted approach template annotated with the Charter mechanics it obeys. Ten seconds against their inbox, and it wins the diff.</p></div>
+
+    <div class="item"><div class="head"><span class="n">8</span><h3>Answer the score-exposure fear; fix the Leadership cell</h3><span class="lenses">CRO</span></div>
+      <p class="prob">"We score the employers, too" never says the score is confidential, so the CRO imagines a public league table. The Leadership cell's "opened on placements rather than promises" reads as "we do not take leadership searches yet."</p>
+      <p class="fix"><b>Rewrite</b>Two sentences in the Standard section: "Your score is confidential: shown only to candidates inside your own search, never published; only the 80-plus endorsed mark ever appears in public." Leadership cell: sold on the founder with fifteen years in search, not on an internal gating rule.</p></div>
+
+    <div class="item"><div class="head"><span class="n">9</span><h3>State the trade at "Request representation"</h3><span class="lenses">SE · conversion</span></div>
+      <p class="prob">The Register section swears entry is "never by signup", then the CTA is a mailto to apply@ requesting a note: an application with better typography. The structured hour is undefined; month-one value is unstated.</p>
+      <p class="fix"><b>Rewrite</b>At the CTA: what the hour contains (five dimensions, one real win checked), what you leave with (your package against the verified set, the signed Charter, your bar on file), and what follows (silence, until something clears it). Rename the address represent@.</p></div>
+
+    <div class="item"><div class="head"><span class="n">10</span><h3>Honest counts, and label borrowed data as what it is</h3><span class="lenses">SE · investor · brand · veteran</span></div>
+      <p class="prob">"Know the market cold" sits over an all-US public table that reads as reprinted survey data; the outreach doctrine's best device ("we have 9 verified datapoints, and we will not pretend that is a benchmark") never made it to the site.</p>
+      <p class="fix"><b>Rewrite</b>A live line above the table: "Offer-verified packages held today: N (X document-verified, Y attested). Updated monthly." Relabel the table "The public state of the art: what we are replacing." One franchise name: The Kingmaker Report.</p></div>
+  </section>
+
+  <section>
+    <h2>Already sharp. Do not dilute.</h2>
+    <ul class="plain">
+      <li><strong>The 1+1 rate card as one public sentence</strong> with the €20k minimum in fine print: all six lenses called it the sharpest commercial idea in the venture.</li>
+      <li><strong>The honest two-track SLA</strong> ("discretion has a clock speed"): the rare speed claim a skeptic cannot puncture.</li>
+      <li><strong>The same-day honest inventory answer</strong>: the real risk-reversal for a firm with no logos; lead with it.</li>
+      <li><strong>The specimen dossier and scorecard</strong>, watermarked, with the honest 77/100. Competitors will have adjectives; keep the specimens.</li>
+      <li><strong>The voice discipline</strong>: "An exam is beneath you. An award is not." Zero exclamation marks. The restraint is the proof of taste.</li>
+      <li><strong>The Charter's mechanism-per-promise architecture backed by the working engine</strong>: the genuinely uncopyable part. Surface more; dilute none.</li>
+      <li><strong>The naming spine</strong>: Kingmaker, the Register, the Standard, the Report, Fellow, and "Represented by Kingmaker" as a spoken status line.</li>
+      <li><strong>The honest-N doctrine</strong> from outreach: extend it to the site; it is the best conversion device in the stack.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Repaired during this review</h2>
+    <div class="done"><p>The cross-document contradictions were defects of incomplete implementation, not open decisions, so they were fixed immediately and re-verified: the v1 rate card is purged from the outreach playbook, contract skeleton, and demand list; the site's "sharper terms" and "replacement guarantee" lines now match the decided model; the shortlist standard reads "three evidence dossiers" everywhere. All 9 site checks and all 48 engine tests pass; the site artifact is republished on the same URL.</p></div>
+  </section>
+
+  <section>
+    <h2>Decisions on the founders' desk</h2>
+    <div class="decisions">
+      <div class="decision"><strong>€5,000 commencement fee</strong>, credited in full against the first month: adopt, or keep pure no-cash-before-start? The panel's ruling: adopt; it prices abandonment and funds the year.</div>
+      <div class="decision"><strong>Leadership at 1.5 + 1.5</strong> with 1+1 reserved for endorsed (80+) employers, and retained thirds un-gated for confidential mandates.</div>
+      <div class="decision"><strong>Hard gate on jury language</strong>: no Fellow tier on the site until three jurors are named, with the dated promise line in the meantime.</div>
+      <div class="decision"><strong>The founding cohort cap</strong>: one hundred names, with permanent privileges (founding roll, jury nomination rights, Report first).</div>
+      <div class="decision"><strong>The partnership section</strong>: Daniel's ownership, commitment date, and re-voiced client-side scripts.</div>
+      <div class="decision"><strong>Installment 2 as a standing payable</strong>: both invoices issued at start date, waiver by credit note.</div>
+      <div class="decision"><strong>The site's next sprint</strong>: process strip, published Charter with the forfeit verbatim, named agent, specimen approach message, honest counters, confidentiality sentence, "For the kingmakers" door.</div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Kingmaker · sharpening review</span>
+    <span>6 lenses + synthesis · 7 agents · sources: live site, blueprint, pricing, Charter, outreach</span>
+  </footer>
+</div>
+
+</html>

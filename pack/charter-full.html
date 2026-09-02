@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<title>The Charter, Full Text</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,300..800&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Spline+Sans+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --ink: #171c30; --muted: #565f7d; --faint: #8a92ad;
+    --line: #dcdfeb; --cobalt: #2447e0; --gold: #b57b12; --gold-soft: rgba(181,123,18,0.1);
+    --display: "Bricolage Grotesque", "Avenir Next", "Helvetica Neue", sans-serif;
+    --body: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --mono: "Spline Sans Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg:#0a0e1e; --surface:#121732; --ink:#e8ecfa; --muted:#9aa5c9; --faint:#66719a; --line:#262e52; --cobalt:#6d87ff; --gold:#f0b03f; --gold-soft:rgba(240,176,63,0.1); }
+  }
+  :root[data-theme="dark"] { --bg:#0a0e1e; --surface:#121732; --ink:#e8ecfa; --muted:#9aa5c9; --faint:#66719a; --line:#262e52; --cobalt:#6d87ff; --gold:#f0b03f; --gold-soft:rgba(240,176,63,0.1); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.68; -webkit-font-smoothing:antialiased; }
+  .page { max-width:860px; margin:0 auto; padding:clamp(28px,5vw,64px) clamp(18px,4vw,40px) 80px; }
+  .masthead { display:flex; align-items:center; gap:12px; margin-bottom:30px; }
+  .masthead .brand { font-family:var(--display); font-weight:700; letter-spacing:0.18em; text-transform:uppercase; font-size:0.9rem; }
+  .masthead .doc { margin-left:auto; font-family:var(--mono); font-size:0.64rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--faint); text-align:right; }
+  .masthead a { color:inherit; text-decoration:none; }
+  #md h1 { font-family:var(--display); font-size:clamp(1.7rem,4vw,2.4rem); font-weight:680; line-height:1.12; margin:10px 0 14px; letter-spacing:-0.01em; }
+  #md h2 { font-family:var(--display); font-size:1.35rem; font-weight:660; margin:40px 0 10px; }
+  #md h3 { font-size:1.02rem; font-weight:700; margin:26px 0 8px; }
+  #md p { color:var(--muted); max-width:72ch; margin:10px 0; }
+  #md strong { color:var(--ink); }
+  #md a { color:var(--cobalt); }
+  #md ul, #md ol { margin:10px 0 10px 1.3em; color:var(--muted); max-width:70ch; }
+  #md li { margin:5px 0; }
+  #md blockquote { border-left:3px solid var(--gold); background:var(--gold-soft); padding:12px 18px; margin:14px 0; }
+  #md blockquote p { color:var(--ink); }
+  #md code { font-family:var(--mono); font-size:0.85em; background:var(--surface); border:1px solid var(--line); padding:1px 5px; }
+  #md pre { background:var(--surface); border:1px solid var(--line); padding:14px 18px; overflow-x:auto; margin:14px 0; }
+  #md pre code { border:none; padding:0; }
+  #md table { border-collapse:collapse; margin:14px 0; font-size:0.86rem; width:100%; display:block; overflow-x:auto; }
+  #md th { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--faint); text-align:left; padding:8px 12px; border-bottom:1px solid var(--line); white-space:nowrap; }
+  #md td { padding:9px 12px; border-bottom:1px solid var(--line); color:var(--muted); vertical-align:top; }
+  #md hr { border:none; border-top:1px solid var(--line); margin:34px 0; }
+  footer { margin-top:56px; padding-top:16px; border-top:1px solid var(--line); font-family:var(--mono); font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--faint); }
+</style>
+<div class="page">
+  <div class="masthead"><svg width="24" height="20" viewBox="0 0 28 24" fill="none" aria-hidden="true"><path d="M2 21 L2 7 L9 13 L14 2 L19 13 L26 7 L26 21 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" style="color: var(--gold);"/></svg><a class="brand" href="index.html">Kingmaker</a><span class="doc"><a href="index.html">Partner pack</a><br>Working document</span></div>
+  <div id="md"><noscript><p>Enable JavaScript to render this document.</p></noscript></div>
+  <footer>Shared for collaboration between the founders. Not for redistribution.</footer>
+</div>
+<script type="text/markdown" id="src"># The Kingmaker Candidate Charter
+
+**Version 1.0 — Copenhagen, August 2026**
+Document owner: Founder. Review cycle: every six months, or immediately after any invoked remedy.
+This document has two parts. **Part I** is the Charter itself — one page, signed by the engineer and their named agent. **Part II** is the operational annex: the mechanism behind each commitment, the data-handling terms, and the remedy. The Charter is the promise; the annex is the proof.
+
+---
+
+## Part I — The Charter
+
+*Print this page on its own. It is the document both parties sign.*
+
+> You decide who wins enterprise deals. This Charter is how we earn the right to represent you. It is not marketing copy. It is a signed undertaking, and every commitment in it is enforced by a named mechanism described in the annex. Where we fail, the remedy applies automatically.
+
+### The Five Commitments
+
+**1. You will never be spammed.**
+You have one named agent — the person signing below. Only they may contact you, and only about opportunities at or above your Stated Bar: the compensation floor, role scope, location and company profile you set in writing. Anything below the bar earns you silence. *(Mechanism: Annex A.)*
+
+**2. Your employer can never find out.**
+Confidentiality is engineered, not promised. Your dossier is anonymised until it could describe at least five plausible people; your blocklisted companies never see anything at all; no company learns your name before signing a non-disclosure undertaking; and nothing is sent anywhere without your explicit, per-introduction yes. *(Mechanism: Annex B.)*
+
+**3. You always know your market price.**
+We capture compensation data in every vetting interview, label every datapoint as document-verified or attested, and you receive the same benchmark the hiring company sees, before you decide anything. We will never negotiate for you from a position of information you do not hold. *(Mechanism: Annex C.)*
+
+**4. The Register makes you visibly elite.**
+The Register is invite-only, peer-nominated and evidence-vetted. We stamp nothing we have not tested, which is precisely why the stamp means something. You control what is shown, to whom, and for how long. *(Mechanism: Annex D.)*
+
+**5. We work for your career, not this quarter's fee.**
+Companies pay us; we answer to you. If your best move is the one that earns us nothing — including staying where you are on an improved internal offer — we will tell you so, in writing. It is our published policy. *(Mechanism: Annex E.)*
+
+If we breach any commitment above, the **Charter Remedy** (Annex F) applies without you needing to argue for it.
+
+### Signatures
+
+| | Engineer | Named Agent |
+|---|---|---|
+| Name | ______________________________ | ______________________________ |
+| Signature | ______________________________ | ______________________________ |
+| Date | ______________________________ | ______________________________ |
+| Place | ______________________________ | Copenhagen |
+
+Signed in duplicate. The engineer keeps the original. A change of named agent requires a newly signed Charter page.
+
+---
+
+## Part II — Operational Annex
+
+### Annex A — One named agent, only above your Stated Bar
+
+**The Stated Bar.** At onboarding, your agent records the following with you, in writing. It is your document; you may revise it at any time and the revision takes effect the same working day.
+
+| Field | Example |
+|---|---|
+| Compensation floor | "Base ≥ €95k, OTE ≥ €130k, or do not call" |
+| Role scope | IC senior SE / SE leadership / FDE / solutions architecture |
+| Location and remote terms | "Copenhagen or remote-first EU; no relocation" |
+| Company profile | Stage, sector, size — e.g. "Series B+ infrastructure or security; no services firms" |
+| Non-negotiables | Equity, travel ceiling, team size, on-call terms |
+| Contact status | Active / listening / dormant ("do not contact before [date]") |
+
+**Operating rules.**
+
+- One named agent. No other Kingmaker person may approach you. If your agent leaves or changes, you are told before anyone else contacts you, and a new Charter page is signed.
+- Every approach must cite which element of your Stated Bar it clears. An approach that cannot cite the bar is a breach.
+- "Dormant" is respected absolutely: no approaches, no "just checking in", no newsletter creep. You will still receive your annual compensation snapshot (Annex C), because that is a benefit of representation, not an approach.
+- We keep a contact log. You may request it at any time (Annex B, Full Disclosure right).
+
+### Annex B — Engineered confidentiality
+
+Five interlocking mechanisms. Each one alone would be a policy; together they are a system.
+
+**B1. The k-anonymity rule (k ≥ 5).**
+No dossier, message or verbal description may leave Kingmaker if the combination of attributes in it plausibly maps to fewer than five real people. Before any send, your agent must be able to name — internally, on the record — five plausible individuals the dossier could describe. If they cannot, they must redact (widen the employer description, coarsen tenure, drop the named accounts) until they can. "Senior SE, Copenhagen, ex-[vendor], 6 years, ran the [named bank] POC" fails the test; "Senior SE, Nordics, infrastructure background, led enterprise POCs in regulated finance" passes. The k-count check is logged per dossier per company.
+
+**B1a. When the arithmetic fails: the NDA-first path.**
+At the very top of a small market, anonymity is arithmetic, and sometimes the arithmetic fails. When it does, we tell you, and nothing moves without the NDA and your per-company yes. Concretely: where no dossier specific enough to be worth sending could plausibly describe five people, no dossier is sent at all. The order inverts. The company signs the non-disclosure undertaking before it learns anything about you, and you then decide, company by company, whether your name goes forward. Every send under this path is logged as its own state, distinct from a k ≥ 5 send, and appears as such in your Full Disclosure record (B5).
+
+**B2. The per-company blocklist.**
+You list companies that must never learn of your place on the Register or see any material derived from you. The blocklist:
+
+- extends automatically to parent companies, subsidiaries and any recruiter or advisor we know to act for them;
+- applies to everything — searches, dossiers, aggregate outputs where your inclusion could be inferred, and casual conversation;
+- can be extended at any time with same-day effect, and is re-confirmed at every introduction.
+
+**B3. NDA before reveal.**
+No company learns your name, employer or any identifying detail before it has signed our standard non-disclosure undertaking covering your identity and the fact of your search. No signed NDA, no reveal — including for lighthouse clients, including under deadline pressure.
+
+**B4. Double opt-in and dossier approval.**
+Nothing is sent about you, to anyone, without your explicit yes for that specific company. And you approve the *exact text* of the anonymised dossier — verbatim, in writing — before it goes anywhere. Not a summary of it; the text itself. A dossier edited after approval must be re-approved.
+
+**B5. The Full Disclosure right.**
+On request, you receive a copy of everything ever sent about you: every dossier version, every recipient, every date, and the k-count record for each send. Delivered within five working days. This right exists so that Commitments 1 and 2 are auditable by you, not merely asserted by us.
+
+**How the mechanisms gate each stage:**
+
+| Stage | What the company sees | What must be true first |
+|---|---|---|
+| Longlist discussion | Nothing about you individually | — |
+| Anonymised dossier | Approved text only | Your yes for this company · k ≥ 5 logged · not blocklisted |
+| NDA-first named reveal (B1a, where k ≥ 5 cannot be met) | Nothing before the NDA is signed; then identity | We have told you the arithmetic fails · signed NDA · your explicit per-company yes · not blocklisted · logged as a distinct state |
+| Name reveal | Identity, CV, proof summary | Signed NDA · your second confirmation |
+| Introduction | Direct contact | Double opt-in complete on both sides |
+
+### Annex C — You always know your market price
+
+- Compensation data (base, variable, equity, actuals vs plan) is captured in every vetting interview. Every datapoint carries one of two labels, applied at capture: *document-verified* (we have seen the contract, payslip or equity paperwork) or *attested* (stated to us in interview, not yet documented). Yours is stored under the terms in Annex G.
+- **The parity rule:** before you respond to any offer, you receive the same compensation dataset we have shown, or would show, the hiring company for your profile — same cut, same numbers. No asymmetry, in either direction.
+- We label our data honestly, twice over. Every published output states its split of document-verified versus attested datapoints, always. And below roughly 400 verified datapoints we publish a *snapshot*, not a benchmark, and we say so on the document. We will not dress a small sample up as an index.
+- Everyone on the Register receives the European SE Compensation Snapshot annually, regardless of contact status, free.
+- If you are underpaid against the verified data, your agent tells you — even if no search is live and there is nothing in it for us.
+
+### Annex D — The Register makes you visibly elite
+
+- Entry is by peer nomination and evidence: your work is assessed against the five-dimension proof rubric (discovery, technical credibility, storytelling and communication, objection handling, commercial awareness). We do not sell entry, and we do not admit to hit a headcount.
+- A place on the Register is free for candidates, forever. There is no premium standing that money can buy; Fellow standing is earned through proof, never purchased.
+- The recorded demo Showcase is **optional and candidate-owned**. It is never a condition of representation, never a mandatory audition, and never shown to a company without the per-company consent in Annex B4. You may withdraw or delete it at any time and it is erased, not archived.
+- You may state publicly that you are on the Kingmaker Register. We confirm it (yes/no only) to anyone you direct us to — and to no one else.
+- Removal from the Register happens only for evidenced integrity failures, with written reasons and a right of reply. Never for declining approaches, going dormant, or taking a role we did not place.
+
+**The Founding Cohort.** The founding cohort closes at one hundred names, and once closed it cannot be reopened or re-earned. If you are one of the hundred, four privileges attach to your standing permanently: a place on the consented founding roll, published only with your written consent, like every name we publish; nomination rights into the pool from which the first Fellow jury is drawn; every Report we publish, before anyone else sees it; and the founding mark on your dossier, forever. These privileges survive every placement, rejection and dormant year, the same as your place on the Register itself.
+
+### Annex E — Career over fee
+
+- **Published counteroffer policy:** where an internal counteroffer or retention move is genuinely better for you — assessed against your own Stated Bar, your stated career direction and the verified market data, not against our fee — your agent's written recommendation will say: take it. This policy is public, printed in client agreements, and clients accept it as a condition of working with us. Referred-and-retained people stay longer; a placement you regret is a defect, not a win.
+- **No fee-motivated steering.** Where you hold multiple offers, your agent gives you a written comparison scored against your Stated Bar — including the option of staying put. Our fee arrangement with each client is disclosed to you on request, so you can check the recommendation against the incentive yourself.
+- Agent recognition inside Kingmaker is tied to engineer outcomes at 12 months (retention, satisfaction, progression), not to which offer you sign.
+- Your place on the Register survives every placement, rejection and dormant year. We are building a register measured in decades, and we will not spend your trust on one quarter's revenue. Breach of this annex triggers the Charter Remedy like any other.
+
+### Annex F — The Charter Remedy
+
+The named remedy referred to in Part I. It is not a complaints procedure; it operates automatically once a breach is identified, whether you raised it or we did.
+
+| Step | What happens | By when |
+|---|---|---|
+| 1. Acknowledgement | Written acknowledgement that a potential breach is under review | 2 working days |
+| 2. Account | A written account from the founder personally: what happened, which commitment was breached, root cause | 5 working days |
+| 3. Correction | The fix, in writing: process change, retraining, or termination of the practice that caused it | 10 working days |
+| 4. Your election | You choose any or all of: change of named agent; freeze on all activity; full erasure under Annex G; continued representation on your terms | Your timetable |
+
+**The confidentiality forfeit.** If we breach Commitment 2 and a company you did not authorise learns of your search through our fault: you are notified within 24 hours of our discovering it; we terminate the client engagement concerned; and we forfeit any fee connected to it. This is contractual with our clients, not discretionary.
+
+Every invoked remedy is recorded and reviewed at the next Charter revision. For data-protection matters you may also complain to Datatilsynet at any time (Annex G); the Remedy does not replace or delay your statutory rights.
+
+### Annex G — GDPR and data handling
+
+**Controller.** Kingmaker [legal entity and CVR number to be inserted on incorporation], Copenhagen, Denmark. Data-protection contact: your named agent, or the founder directly. Data is hosted within the EU/EEA; the current sub-processor list is available on request. No automated decision-making or profiling is applied to the Register, vetting or introductions — every decision about you is made by a person.
+
+| Data category | Examples | Legal basis (GDPR Art. 6) | Retention |
+|---|---|---|---|
+| Identity and contact | Name, email, phone, location | Consent (6(1)(a)) | Life of representation |
+| Stated Bar and blocklist | Comp floor, scope, blocked companies | Consent | Life of representation |
+| Proof records | Rubric scores, vetting notes, references | Consent | Life of representation |
+| Showcase recording | Optional recorded demo | Explicit consent, revocable per Annex D | Until you delete it |
+| Compensation data | Base/OTE/equity, labeled document-verified or attested | Consent; aggregates only ever published anonymised and k ≥ 5 | Life of representation; anonymised aggregates retained thereafter |
+| Send and contact logs | Dossier versions, recipients, k-counts, approaches | Legitimate interest (6(1)(f)): auditability of this Charter | 3 years after last activity |
+| Invoicing records (placed engineers' clients) | Fee documents naming a placement | Legal obligation (6(1)(c)), Danish Bookkeeping Act | 5 years |
+
+**Your rights.** Access (the Full Disclosure right in B5 exceeds the statutory minimum), rectification, portability, restriction, and erasure. Erasure requests are completed within 30 days. Three things survive erasure, and we tell you so at the time: a minimal suppression record (name and blocklist entries — kept solely so we never contact you or your blocked companies again; legitimate interest), truly anonymised aggregate statistics (no longer personal data), and invoicing records we are legally required to keep. You may lodge a complaint with **Datatilsynet** (the Danish Data Protection Agency, www.datatilsynet.dk) or your local supervisory authority at any time.
+
+**What we never do.** We do not sell, rent or trade engineer data. We do not scrape our engineers' networks. We do not share anything with any employer — including your own — outside the gated stages in Annex B.
+
+---
+
+### Charter acceptance record (annex copy)
+
+| | Engineer | Named Agent |
+|---|---|---|
+| Name | ______________________________ | ______________________________ |
+| Signature | ______________________________ | ______________________________ |
+| Date | ______________________________ | ______________________________ |
+
+*Charter version signed:* 1.0 · *Stated Bar recorded on:* ______________ · *Blocklist recorded on:* ______________
+
+*The deal is won before the seller speaks.*
+</script>
+<script src="marked.min.js"></script>
+<script>
+  var src = document.getElementById("src").textContent;
+  document.getElementById("md").innerHTML = marked.parse(src, { mangle: false, headerIds: false });
+</script>
+</html>

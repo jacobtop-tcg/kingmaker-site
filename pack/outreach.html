@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<title>The Outreach Playbook</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,300..800&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Spline+Sans+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --ink: #171c30; --muted: #565f7d; --faint: #8a92ad;
+    --line: #dcdfeb; --cobalt: #2447e0; --gold: #b57b12; --gold-soft: rgba(181,123,18,0.1);
+    --display: "Bricolage Grotesque", "Avenir Next", "Helvetica Neue", sans-serif;
+    --body: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --mono: "Spline Sans Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg:#0a0e1e; --surface:#121732; --ink:#e8ecfa; --muted:#9aa5c9; --faint:#66719a; --line:#262e52; --cobalt:#6d87ff; --gold:#f0b03f; --gold-soft:rgba(240,176,63,0.1); }
+  }
+  :root[data-theme="dark"] { --bg:#0a0e1e; --surface:#121732; --ink:#e8ecfa; --muted:#9aa5c9; --faint:#66719a; --line:#262e52; --cobalt:#6d87ff; --gold:#f0b03f; --gold-soft:rgba(240,176,63,0.1); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.68; -webkit-font-smoothing:antialiased; }
+  .page { max-width:860px; margin:0 auto; padding:clamp(28px,5vw,64px) clamp(18px,4vw,40px) 80px; }
+  .masthead { display:flex; align-items:center; gap:12px; margin-bottom:30px; }
+  .masthead .brand { font-family:var(--display); font-weight:700; letter-spacing:0.18em; text-transform:uppercase; font-size:0.9rem; }
+  .masthead .doc { margin-left:auto; font-family:var(--mono); font-size:0.64rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--faint); text-align:right; }
+  .masthead a { color:inherit; text-decoration:none; }
+  #md h1 { font-family:var(--display); font-size:clamp(1.7rem,4vw,2.4rem); font-weight:680; line-height:1.12; margin:10px 0 14px; letter-spacing:-0.01em; }
+  #md h2 { font-family:var(--display); font-size:1.35rem; font-weight:660; margin:40px 0 10px; }
+  #md h3 { font-size:1.02rem; font-weight:700; margin:26px 0 8px; }
+  #md p { color:var(--muted); max-width:72ch; margin:10px 0; }
+  #md strong { color:var(--ink); }
+  #md a { color:var(--cobalt); }
+  #md ul, #md ol { margin:10px 0 10px 1.3em; color:var(--muted); max-width:70ch; }
+  #md li { margin:5px 0; }
+  #md blockquote { border-left:3px solid var(--gold); background:var(--gold-soft); padding:12px 18px; margin:14px 0; }
+  #md blockquote p { color:var(--ink); }
+  #md code { font-family:var(--mono); font-size:0.85em; background:var(--surface); border:1px solid var(--line); padding:1px 5px; }
+  #md pre { background:var(--surface); border:1px solid var(--line); padding:14px 18px; overflow-x:auto; margin:14px 0; }
+  #md pre code { border:none; padding:0; }
+  #md table { border-collapse:collapse; margin:14px 0; font-size:0.86rem; width:100%; display:block; overflow-x:auto; }
+  #md th { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--faint); text-align:left; padding:8px 12px; border-bottom:1px solid var(--line); white-space:nowrap; }
+  #md td { padding:9px 12px; border-bottom:1px solid var(--line); color:var(--muted); vertical-align:top; }
+  #md hr { border:none; border-top:1px solid var(--line); margin:34px 0; }
+  footer { margin-top:56px; padding-top:16px; border-top:1px solid var(--line); font-family:var(--mono); font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--faint); }
+</style>
+<div class="page">
+  <div class="masthead"><svg width="24" height="20" viewBox="0 0 28 24" fill="none" aria-hidden="true"><path d="M2 21 L2 7 L9 13 L14 2 L19 13 L26 7 L26 21 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" style="color: var(--gold);"/></svg><a class="brand" href="index.html">Kingmaker</a><span class="doc"><a href="index.html">Partner pack</a><br>Working document</span></div>
+  <div id="md"><noscript><p>Enable JavaScript to render this document.</p></noscript></div>
+  <footer>Shared for collaboration between the founders. Not for redistribution.</footer>
+</div>
+<script type="text/markdown" id="src"># The Kingmaker Outreach Playbook
+
+> **Phase 0 gate (Sep 2026):** the company-side motion in Part 2 is DORMANT until the blueprint's activation triggers fire (25+ Represented, 3+ named jurors, one inventory-matched lighthouse req). Until then this playbook's live surface is Part 1 only, at the side-build cadence of one to two approaches a week. Do not warm named accounts you cannot serve yet; the demand list is for reading, not calling, in this phase.
+
+**Both sides of the market. Print it, use it tomorrow.**
+Version 1.1 — Copenhagen and Stockholm, August 2026. Owner: Jacob Top Møller. Part 2, the company side, is led and voiced by Daniel Wallén; the split is stated at the head of that part.
+
+---
+
+## How to read this document
+
+Everything in here passes one editorial test: **proven, not promised.** If a sentence contains a claim you could not substantiate with a document, a dataset, or a named reference on request, delete the sentence. That rule outranks every template below.
+
+Voice check before anything goes out: would a senior SE write this? Precise, technical, understated. No exclamation marks. Banned words: rockstar, ninja, A-player, top talent, passionate. If a message reads like a recruiter wrote it, it has failed before it is sent.
+
+---
+
+# Part 1 — Candidate Side
+
+## 1.1 The data-true doctrine
+
+The people we approach are Principal and senior SEs who receive 10–15 recruiter messages a week and delete hype on sight. The only way to be the one message they answer is to be the one message that contains nothing they can disprove.
+
+| Rule | In practice |
+|---|---|
+| **Never hype** | "You could be earning 60–150% more" is banned in all forms. So is any unverifiable superlative about them, us, or a role. |
+| **Verifiable specificity only** | Every number in a message must be producible on request: "We hold [N] offer-verified Copenhagen senior SE packages from the last 12 months" is allowed only when N is true and we can show the methodology (not the data — k-anonymity holds). |
+| **State the mechanism, not the outcome** | Say what the Register is and how vetting works. Never say what joining will do for their career. They will decide that. |
+| **Honest inventory** | If we do not have relevant data for their market or level, say so: "We have 9 verified data points at your level in Denmark. That is not yet a benchmark, and we will not pretend it is." This sentence wins more replies than any claim. |
+| **No manufactured urgency** | No "this role is moving fast." If a search has a real deadline, name the date and the reason. |
+| **Free means free** | Representation costs nothing for the engineer, forever. Say it once, plainly, and never dress it up as generosity — it is how the model works. |
+
+## 1.2 Rules of engagement (structural, not aspirational)
+
+These are commitments from the Candidate Charter. Every message must be consistent with them because candidates will test them.
+
+1. **One named agent.** The person who first contacts a candidate is their agent for life at Kingmaker. No handoffs, no "my colleague will reach out."
+2. **Never approach below the stated bar.** If a represented engineer has told us their floor (comp, level, remote policy, sector), we never bring anything under it. Not even "just in case."
+3. **One follow-up, then silence is respected.** Two unanswered messages means the sequence ends. We may re-approach only on a new, materially different trigger (nomination, Snapshot publication, a search that clears their stated bar).
+4. **NDA before reveal, double opt-in on every introduction, k-anonymity on every dossier.** Never mention a client name in first contact. Never send a candidate's details anywhere without their yes for that specific introduction.
+5. **No fee-motivated steering.** If asked "would you say that if the other company paid you more?", the answer is the Charter's named remedy, the forfeit: if we steer you for our fee, we forfeit our fee. Point to it.
+
+## 1.3 Message templates
+
+Variables in [brackets]. Fill every one or do not send. Each template is complete — resist the urge to add warmth, urgency, or adjectives.
+
+### T1 — LinkedIn connection note (300-character limit)
+
+> [First name] — I run the register at Kingmaker, a Copenhagen search practice that only does Sales Engineering. We keep a peer-nominated register of the field's best work. Your [specific artefact: talk / post / project] is why I'm writing. No role attached. Worth a connection?
+
+*Rules: name one specific, checkable piece of their work. If you cannot, you have not done enough research to contact them.*
+
+### T2 — First message (post-connection or InMail)
+
+> Subject: Your [talk/post/project] on [topic]
+>
+> [First name],
+>
+> I watched/read your [specific artefact] — the section on [specific detail, e.g. "scoping PoV success criteria before the demo"] is the sort of thing most SEs learn the hard way and few write down.
+>
+> I run the candidate side of Kingmaker. We maintain an invite-only register of customer-facing engineers — SEs, solution consultants, FDEs — built on peer nomination and evidence, not CVs. Representation is free, permanently, and most of the engineers we represent are not looking; the point is to be known and verified before you are ever on the market.
+>
+> Two things it gets you, concretely:
+> 1. Verified compensation data for your market and level, shared back with you as it accrues. Today we hold [N] offer-verified packages for [market/level]. [If N is small: "That is early data, not a benchmark — we say so until we pass 400 across Europe."]
+> 2. A standing rule that you are only ever approached above a bar you set, by one named agent (me), with a written charter behind it. One line from that charter: if we steer you for our fee, we forfeit our fee.
+>
+> No role attached to this message. If a 20-minute call to see whether the register is worth your time sounds reasonable, tell me a window. If not, no follow-up beyond one.
+>
+> Jacob
+
+### T3 — Single follow-up (7–10 days later, then stop)
+
+> [First name] — one nudge, as promised only one. If the timing is wrong, ignore this and I'll close the loop; you won't hear from me again unless something clears a bar you'd have set yourself. If you'd rather I simply send the [market] comp figures we hold and leave it there, say "data" and I will.
+>
+> Jacob
+
+### T4 — Nomination-triggered approach
+
+> Subject: [Nominator first name] put your name forward
+>
+> [First name],
+>
+> [Nominator full name] nominated you for the Kingmaker register. The exact wording, shared with their permission: "[verbatim quote from nomination]."
+>
+> The register is invite-only and peer-nominated — we don't scrape LinkedIn and we don't cold-list people. A nomination starts a conversation, nothing more: representation is free, most people on the register aren't job-seeking, and nothing about you is shown to anyone without your explicit yes each time.
+>
+> What vetting involves, so there are no surprises: a structured conversation against five dimensions — discovery, technical credibility, storytelling, objection handling, commercial awareness — plus verification of one or two pieces of real work. A recorded demo showcase exists but is optional and remains your property; it is never a mandatory audition.
+>
+> If you'd like the 20 minutes, pick a slot: [link]. If not, I'll thank [nominator first name] and leave it there.
+>
+> Jacob
+
+### T5 — Comp-snapshot offer (the data trade)
+
+> Subject: [Market] SE compensation — verified figures, not survey guesses
+>
+> [First name],
+>
+> Short version: we verify compensation from offer letters and signed packages in every vetting interview — not self-reported survey numbers. We currently hold [N] verified data points for [market/segment]. Each point is labeled document-verified or attested, and we publish the split.
+>
+> The trade is symmetrical. Represented engineers contribute their (verified, anonymised) package and see where they sit against the verified set for their level and market. Anonymisation is structural: no attribute combination we publish maps to fewer than five plausible people.
+>
+> [If N ≥ 100 for Europe:] The first European SE Compensation Snapshot is built from this set. Engineers we represent get the full cut for their market.
+> [If N < 100:] We publish nothing until the set is large enough to mean something, and we won't call anything a benchmark until we pass 400 verified packages across Europe.
+>
+> If you want your number placed against the set, the vetting conversation takes about an hour and costs nothing. Reply with a window.
+>
+> Jacob
+
+### T6 — Post-Snapshot-publication approach
+
+> Subject: The European SE Compensation Snapshot — [market] figures
+>
+> [First name],
+>
+> We published the first European SE Compensation Snapshot this week: [N] offer-verified packages, [X] of them from [candidate's market]. Headline for your market: median senior SE package [figure], with [one specific, true, non-sensational observation — e.g. "variable share running well below the US norm"].
+>
+> Full methodology is public; the data itself is k-anonymised. Engineers we represent see the detailed cut for their level.
+>
+> You're on our nomination list [or: "Your work on [artefact] is why I'm writing"]. If seeing where your package sits against verified peers is useful, the door is the vetting conversation — about an hour, free, no role attached unless you ever want one.
+>
+> Jacob
+
+### T7 — Live-search approach (only above their stated bar, or clearly senior to their current seat)
+
+> Subject: A search that clears the bar — [company sector], [market]
+>
+> [First name],
+>
+> I'm retained on a search I believe clears the bar you set [or: "that is senior to your current seat on every axis I can verify"]. Before names: the client has completed our SE-organisation diagnostic, and you'll see their scores — enablement, comp structure, demo-to-close ratio, SE:AE ratio — before you decide anything.
+>
+> The shape: [level], [market/remote policy], package range [range — must sit above their stated floor], [one structural fact about the role, e.g. "SE org reports to the CRO, not sales ops"].
+>
+> Company name comes after a mutual NDA — theirs and yours both hold. Nothing moves without your explicit yes at each step, and if this isn't above your bar, tell me and I'll recalibrate the bar rather than argue.
+>
+> Interested enough for the diagnostic scores and the NDA? One line back is enough.
+>
+> Jacob
+
+---
+
+# Part 2 — Company Side
+
+**Ownership.** This part is led and voiced by Daniel Wallén, who runs the client side of the practice (the named-account motion, SE-Org diagnostics, search execution) from the Stockholm hub. Jacob Top Møller owns the candidate side (the Register, vetting, content) from Copenhagen; Parts 1, 3 and 4 are his. Every first-person script below is Daniel speaking. One rule on personal claims in these scripts: the only personal number permitted is the profile-verified 15 years in executive search. Anything more specific (placements, tenures, named wins) is written as [Daniel's number, to be added] until Daniel supplies it and it can be checked.
+
+## 2.1 The concierge named-account motion
+
+We do not run outbound sequences to companies. We maintain a named-account list of 30–50 organisations per market and work them individually — the way their own enterprise reps work named accounts. One owner (Daniel Wallén), full account notes, patience measured in quarters.
+
+### Qualification criteria — a company enters the named-account list only if:
+
+| Criterion | Bar |
+|---|---|
+| Live or imminent SE/presales/FDE hiring need | Req open now, or headcount plan confirms one inside 2 quarters |
+| Seniority of the hire | Senior SE and above, SE leadership, or first-FDE-team builds. No graduate schemes |
+| Willingness to be diagnosed | Will complete the SE-Org Health Check intake and accept that candidates see the scores |
+| Economics | OTE supports the €20k minimum at 1+1. Leadership searches (Head/Director/VP Presales, first team-building SE hire) price at 1.5+1.5 months of OTE; employers holding the endorsed mark (org score 80+) keep 1+1 on leadership. The classic retained-thirds structure (€50k minimum) is available whenever the client requests confidentiality or prefers it. Exclusive mandate; €5,000 commencement fee (or equivalent in the search currency) invoiced at signature, credited in full against installment 1 |
+| Founding trade (first cohort only) | Will grant a named case study; the trade is never a discount — founding clients keep the 1+1 rate permanently on standard searches (leadership searches follow the leadership rate unless the org holds the endorsed mark) |
+| Disqualifiers | Wants contingency spray, refuses exclusivity, refuses the commencement fee, treats the diagnostic as optional |
+
+### 2.2 The pitch script (first conversation, 10 minutes)
+
+> "We're not a staffing firm and we don't work from job boards. Kingmaker maintains a register of the strongest customer-facing engineers in Europe — peer-nominated, evidence-vetted, mostly not looking. We run it the way an executive-search house runs a leadership bench, except the specialism is the technical win: SEs, solution consultants, FDEs.
+>
+> For your live req, the offer is simple: describe the role and I can tell you today whether we have three plausible, movable candidates on the register — and I'll tell you honestly if we don't. If they're in inventory, shortlist in seven days. If the right people are on the register but passive and need a proper approach, three to four weeks, and I'll say which it is before you sign anything. On money: €5,000 opens the search, credited in full against the first month; beyond it, nothing is invoiced before your hire's start date.
+>
+> Two things that are different and non-negotiable. First, every candidate we introduce sees your SE-organisation health scores — a structured diagnostic we run with you on ratio, enablement, comp structure, and how the SE org is positioned. Strong candidates ask these questions anyway; we answer them up front, so the org-fit conversation has happened before the first interview instead of in month three. Second, everything is double opt-in and charter-governed on the candidate side. That structure is the reason a passive senior SE has to hear us out; we won't quote reply rates until we can count them."
+
+### 2.3 Objection handling
+
+| Objection | Response |
+|---|---|
+| **"Boutique X does this at 15–20% contingency."** | "They should be cheaper — they're selling CV flow, and you pay only when it works because they can't promise it will. We're exclusive and retained-shaped because the work is different: we're approaching named, passive, vetted people on your behalf, with a diagnostic that makes your org legible to them. Also worth pricing in: beyond the €5,000 that opens the search, credited in full against the first installment, nothing is invoiced before your hire's start date; you have met the shortlist and made the hire before the fee falls due. And referred, properly-matched hires stay roughly twice as long (CIPD 2025) — the fee difference disappears inside the first regretted attrition you avoid." |
+| **"We source in-house."** | "You should — for the reachable market. The register exists for the unreachable part: the senior SEs who ignore InMails because they get fifteen a week. Ask your talent team what their reply rate on Principal SEs is. We won't quote ours until it's countable; the structural difference is that we're not asking anyone to apply, we're approaching people the register already represents. Use us for the two hires a year your team can't unlock, not the ones they can." |
+| **"Never heard of you."** | "Correct — we're new, and we won't pretend otherwise. The practice is new; I am not: 15 years in executive search, checkable on my profile. Three things you can check on the practice: the Charter we sign with every candidate, the diagnostic methodology, and our compensation dataset and how it's verified. And you're not paying for a track record: €5,000 opens the search and is credited in full against the first month; beyond it, nothing is invoiced before your hire's start date, and the second month's invoice, issued at start, is payable only once they've stayed six months. If they leave before that, it dies as a credit note. Half our fee is a bet on our own vetting. The founding trade is a named case study when it works — and the 1+1 rate held for you permanently. The honesty guarantee is the same on day one as day one thousand: if we don't have your candidates, I'll say so on this call." |
+| **"Why does the candidate see our diagnostic scores?"** | "Because they'll find out anyway — in month three, after you've paid for the hire. Senior SEs diligence employers hard. Showing the scores up front costs you weak candidates and wins you strong ones, and it collapses your interview-to-offer time because the org-fit conversation has already happened. Low scores don't block a search; only the public 'Kingmaker-endorsed employer' badge is gated. The badge has commercial teeth: employers holding it at an org score of 80 or above keep the 1+1 rate on leadership searches, where the default is 1.5+1.5." |
+| **"Two payments? Others charge once."** | "Both invoices are issued at your hire's start date. The first is payable then. The second is earned at start but payable at the six-month anniversary plus 14 days, and if the hire resigns or is dismissed for cause before that date, we waive it by credit note; you never chase a refund because there is nothing to refund. Nobody gives you back a bad hire's fee; we write off half of ours instead. Beyond the €5,000 that opened the search, credited in full against the first installment, nothing was invoiced before the start date. That is why the mandate is exclusive: we carry the cash risk, you carry the commitment." |
+| **"Why a commencement fee?"** | "Because an abandoned search is real work that someone ends up paying for, and honest pricing puts that cost where it belongs. Between signature and start date we run the diagnostic, approach named passive people, and vet; if a client walks away mid-search, that work is done and unpaid. The €5,000 is credited in full against the first installment, so a client who hires pays nothing extra. The only client who pays it net is one who abandons the search. It also settles the exclusivity question: you are not granting us a favor, you have bought a committed search, and we owe you one in return." |
+
+### 2.4 Discovery-call structure (45 minutes — doubles as the SE-Org diagnostic intake)
+
+| Segment | Minutes | What happens |
+|---|---|---|
+| 1. The req, precisely | 10 | Level, market, sector, comp range, remote policy, why the seat is open (growth vs. backfill vs. regretted attrition — ask directly) |
+| 2. Diagnostic intake | 15 | Scored, structured: SE:AE ratio; who SEs report to; % time on demos vs. PoV vs. RFP; PoV win rate if tracked; comp structure (base/variable split, what variable is gated on); enablement budget and ramp plan; last two SE departures and why |
+| 3. Honest inventory check | 10 | Against the register, live: "Here's what I can see today — [we have / we don't have] three plausible, movable candidates." If not: say so, state what a proper passive approach takes (3–4 weeks), or decline the search |
+| 4. Terms and the trade | 10 | The commencement fee (€5,000 invoiced at signature, credited in full against installment 1; beyond it, nothing invoiced before the hire's start date); the 1+1 rate card (both invoices issued at start date; installment 2 earned in full at start, payable at the six-month anniversary plus 14 days, waived by credit note on voluntary resignation or dismissal for cause before then); leadership searches at 1.5+1.5, with endorsed employers (org score 80+) keeping 1+1; retained-thirds on request for confidential mandates; exclusivity as the purchased counterpart of the commencement fee; the case-study trade; what the candidate sees (scores, k-anonymised at first, double opt-in throughout) |
+
+Close of call, verbatim: "You'll have your diagnostic scores and my written go/no-go within 48 hours. If it's a no-go, I'll tell you why and, where I can, who else to talk to."
+
+---
+
+# Part 3 — The Content Engine
+
+## 3.1 Cadence and formats
+
+Three posts per week on LinkedIn, one per format. The content is the top of both funnels: candidates nominate and join because the craft content proves we understand the job; companies call because the data content proves we hold the ground truth.
+
+| Format | Day | What it is | Rule |
+|---|---|---|---|
+| **Verified comp teaser** | Mon | One true, k-anonymised finding from the verified dataset | Always state N and the document-verified vs attested split. Never extrapolate past the data. Below n=400 Europe-wide, always include "early data, not a benchmark" |
+| **SE-craft essay** | Wed | 300–500 words on the actual work: discovery, PoV design, demo craft, objection handling | Written like a senior SE's internal memo. No listicles, no "5 tips" |
+| **FDE / AI-era analysis** | Fri | What AI is doing to the customer-facing engineering role | Analysis, never breathlessness. Cite the numbers (e.g. FDE postings up ~800% YoY in 2025) |
+
+## 3.2 Twelve first posts (hooks included)
+
+| # | Format | Hook (first line) | Body direction |
+|---|---|---|---|
+| 1 | Comp | "We verify SE compensation from offer letters, not surveys. Here's the first thing the data said that the surveys don't." | Launch the verification methodology; state current N honestly |
+| 2 | Craft | "The best discovery question I've ever heard an SE ask took four words." | Discovery as the first proof dimension; invite examples in comments |
+| 3 | FDE | "Forward Deployed Engineer postings grew roughly 800% last year. Most of those job specs are describing three different jobs." | Unbundle the FDE title; what EU scale-ups actually need |
+| 4 | Comp | "US median SE OTE is $205k — $263k in AI/ML. Nobody can tell you the verified European figure. Yet." | The data gap is the point; the Snapshot is the answer |
+| 5 | Craft | "A PoV without written success criteria isn't a proof of value. It's a free consulting engagement." | PoV scoping discipline; craft respect, lightly |
+| 6 | FDE | "AI didn't make the SE role smaller. It moved the demo from the screen to the room." | What survives automation: discovery, trust, the technical win |
+| 7 | Comp | "Roughly 30% of SEs report burnout. The comp data suggests one reason the surveys miss." | Variable comp gated on things SEs don't control; careful, evidence-first |
+| 8 | Craft | "The demo that wins isn't the one that shows the most. It's the one that omits the most, deliberately." | Storytelling dimension of the rubric |
+| 9 | FDE | "Hired.com is dead. Triplebyte is dead. Self-serve marketplaces keep failing technical talent — here's the structural reason." | Why matching this market needs judgement, not filters; sets up the Register logic |
+| 10 | Comp | "Referred hires stay 2.1x longer (CIPD, 2025). Peer nomination isn't a nicety. It's a retention instrument." | The Register's nomination mechanic, explained commercially |
+| 11 | Craft | "Objection handling isn't rebuttal. The best SEs I've vetted agree with the objection first." | From real (anonymised) vetting observations once available |
+| 12 | FDE | "The Nordics have zero SE-specialist recruiters. For a region this dense in SaaS, that's not a gap — it's a market failure." | Plant the flag; why Copenhagen, why now |
+
+## 3.3 Commenting strategy — PreSales Collective and Nordic SaaS communities
+
+The rule: **give the answer, never the pitch.** Kingmaker's name in the profile does the selling.
+
+- **Where:** PreSales Collective (Slack + LinkedIn), Presales Leadership Collective threads, Nordic SaaS communities (Danish SaaS Community, SaaS Nordic, TechBBQ circles), and the comment sections of the 20–30 most-followed SE voices.
+- **Cadence:** 5 substantive comments per posting day (15/week). A substantive comment adds a number, a counter-example, or a sharper framing — never "Great post."
+- **Comp questions are the beachhead.** Every "what should I be earning?" thread gets our verified figure for that market and level if we hold one, with N stated, and "we don't have enough verified data for that market yet" if we don't. Both answers build the same reputation.
+- **Never DM from a comment thread.** If someone is worth approaching, they get the researched T1/T2 sequence like anyone else.
+- **In PSC specifically:** answer, don't recruit. PSC's rules and goodwill matter more than any single candidate — see Part 4.
+
+---
+
+# Part 4 — PreSales Collective Partnership
+
+## 4.1 The objective
+
+Inside 90 days: Kingmaker as a PSC regional host (Copenhagen/Nordics chapter) plus sponsor of one flagship event. PSC is the single densest pool of self-identified SEs in the world; hosting makes us infrastructure rather than a vendor.
+
+## 4.2 The proposal email
+
+> Subject: A Copenhagen/Nordics chapter — proposal from a specialist who'll do the work
+>
+> [Name],
+>
+> I'm Jacob, co-founder of Kingmaker in Copenhagen — a search practice that works exclusively in presales and solutions roles. Before that ask lands wrong: this is not a request to recruit inside PSC. It's an offer to run part of it.
+>
+> The Nordics are one of Europe's densest SaaS regions and, as far as I can establish, have no active PSC chapter and no SE-specialist presence at all. I'd like to propose:
+>
+> 1. **Regional host, Copenhagen/Nordics.** I'll fund and organise quarterly in-person meetups — venue, speakers, logistics — under PSC's brand and rules, starting within 60 days of a yes. Content is craft-first (discovery, PoV practice, demo teardowns); I can commit two confirmed speakers for the first event before we announce it.
+> 2. **Event sponsorship.** Kingmaker would sponsor [named PSC event/programme] this year. In return we'd want nothing beyond standard sponsor visibility — no attendee lists, no data.
+> 3. **A community rule I'll put in writing:** no outreach to PSC members sourced through PSC spaces or events. Our register is peer-nominated; PSC is where we contribute, not where we source. Happy to sign whatever conduct terms you use.
+>
+> One asset that may be useful to members regardless: we're building an offer-verified (not self-reported) European SE compensation dataset, published k-anonymised. If PSC wanted first access for members, that's on the table.
+>
+> Fifteen minutes to discuss? I'll fit your calendar.
+>
+> Jacob
+> Co-founder, Kingmaker — Copenhagen
+
+## 4.3 Fallback plan if PSC declines
+
+Decline costs us a badge, not the motion. Same events, own brand.
+
+| Step | Action | Timing |
+|---|---|---|
+| 1 | Launch **Kingmaker Sessions** — quarterly Copenhagen evening for customer-facing engineers: one craft talk, one demo teardown, verified comp Q&A. Cap at 40, invite-and-nominate entry (mirrors the Register mechanic) | First event within 60 days of the decline |
+| 2 | Partner locally instead: co-host with a Nordic SaaS community or a friendly scale-up's SE org (their venue, our programme). Two warm-target companies from the named-account list get first offer | In parallel |
+| 3 | Keep PSC relations warm: remain a model citizen in their spaces, sponsor as an ordinary sponsor if open to us, and re-propose hosting in two quarters with attendance figures from Sessions as evidence | Ongoing; re-approach at day 180 |
+| 4 | Publish each Session's craft talk as a Wednesday essay (with speaker permission) — the content engine and the event engine feed each other | After each event |
+
+The stance if asked why we run events: the same sentence as everywhere else — the house exists to prove the craft. Events are where the craft is visible.
+
+---
+
+*Everything above is subordinate to the Candidate Charter and the editorial test. When a template and the Charter conflict, the Charter wins. When a claim and the evidence conflict, the claim goes.*
+</script>
+<script src="marked.min.js"></script>
+<script>
+  var src = document.getElementById("src").textContent;
+  document.getElementById("md").innerHTML = marked.parse(src, { mangle: false, headerIds: false });
+</script>
+</html>

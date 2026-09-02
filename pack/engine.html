@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<title>The Register Engine</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,300..800&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Spline+Sans+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --ink: #171c30; --muted: #565f7d; --faint: #8a92ad;
+    --line: #dcdfeb; --cobalt: #2447e0; --gold: #b57b12; --gold-soft: rgba(181,123,18,0.1);
+    --display: "Bricolage Grotesque", "Avenir Next", "Helvetica Neue", sans-serif;
+    --body: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --mono: "Spline Sans Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg:#0a0e1e; --surface:#121732; --ink:#e8ecfa; --muted:#9aa5c9; --faint:#66719a; --line:#262e52; --cobalt:#6d87ff; --gold:#f0b03f; --gold-soft:rgba(240,176,63,0.1); }
+  }
+  :root[data-theme="dark"] { --bg:#0a0e1e; --surface:#121732; --ink:#e8ecfa; --muted:#9aa5c9; --faint:#66719a; --line:#262e52; --cobalt:#6d87ff; --gold:#f0b03f; --gold-soft:rgba(240,176,63,0.1); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.68; -webkit-font-smoothing:antialiased; }
+  .page { max-width:860px; margin:0 auto; padding:clamp(28px,5vw,64px) clamp(18px,4vw,40px) 80px; }
+  .masthead { display:flex; align-items:center; gap:12px; margin-bottom:30px; }
+  .masthead .brand { font-family:var(--display); font-weight:700; letter-spacing:0.18em; text-transform:uppercase; font-size:0.9rem; }
+  .masthead .doc { margin-left:auto; font-family:var(--mono); font-size:0.64rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--faint); text-align:right; }
+  .masthead a { color:inherit; text-decoration:none; }
+  #md h1 { font-family:var(--display); font-size:clamp(1.7rem,4vw,2.4rem); font-weight:680; line-height:1.12; margin:10px 0 14px; letter-spacing:-0.01em; }
+  #md h2 { font-family:var(--display); font-size:1.35rem; font-weight:660; margin:40px 0 10px; }
+  #md h3 { font-size:1.02rem; font-weight:700; margin:26px 0 8px; }
+  #md p { color:var(--muted); max-width:72ch; margin:10px 0; }
+  #md strong { color:var(--ink); }
+  #md a { color:var(--cobalt); }
+  #md ul, #md ol { margin:10px 0 10px 1.3em; color:var(--muted); max-width:70ch; }
+  #md li { margin:5px 0; }
+  #md blockquote { border-left:3px solid var(--gold); background:var(--gold-soft); padding:12px 18px; margin:14px 0; }
+  #md blockquote p { color:var(--ink); }
+  #md code { font-family:var(--mono); font-size:0.85em; background:var(--surface); border:1px solid var(--line); padding:1px 5px; }
+  #md pre { background:var(--surface); border:1px solid var(--line); padding:14px 18px; overflow-x:auto; margin:14px 0; }
+  #md pre code { border:none; padding:0; }
+  #md table { border-collapse:collapse; margin:14px 0; font-size:0.86rem; width:100%; display:block; overflow-x:auto; }
+  #md th { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--faint); text-align:left; padding:8px 12px; border-bottom:1px solid var(--line); white-space:nowrap; }
+  #md td { padding:9px 12px; border-bottom:1px solid var(--line); color:var(--muted); vertical-align:top; }
+  #md hr { border:none; border-top:1px solid var(--line); margin:34px 0; }
+  footer { margin-top:56px; padding-top:16px; border-top:1px solid var(--line); font-family:var(--mono); font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--faint); }
+</style>
+<div class="page">
+  <div class="masthead"><svg width="24" height="20" viewBox="0 0 28 24" fill="none" aria-hidden="true"><path d="M2 21 L2 7 L9 13 L14 2 L19 13 L26 7 L26 21 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" style="color: var(--gold);"/></svg><a class="brand" href="index.html">Kingmaker</a><span class="doc"><a href="index.html">Partner pack</a><br>Working document</span></div>
+  <div id="md"><noscript><p>Enable JavaScript to render this document.</p></noscript></div>
+  <footer>Shared for collaboration between the founders. Not for redistribution.</footer>
+</div>
+<script type="text/markdown" id="src"># The register engine
+
+The operating system behind the storefront. Everything the site promises — the Register, the Charter's mechanisms, the 1+1 rate card, the Standard's scores, the benchmark — runs here as code, not as prose. No dependencies, no external services; data is one JSON file per entity in this directory, which means it is private, versionable, GDPR-erasable, and operable by Claude in any session on this project ("add the engineer I just met", "what invoices are due", "generate the dossier for the n8n search").
+
+```bash
+node scripts/kingmaker.mjs help
+```
+
+## What it enforces (not just records)
+
+| Rule from the brand | Enforcement |
+|---|---|
+| k-anonymity: no dossier describes fewer than 5 plausible people | `dossier` counts the register pool matching every disclosed attribute (standing + role band + segment + market, casefolded) and refuses below k=5, telling you what to coarsen |
+| Double opt-in | `dossier` refuses without both the engineer's approval to be introduced and approval of the exact dossier text |
+| Never approached below the stated bar | `propose` refuses when the search OTE is under the engineer's comp floor |
+| Per-company blocklists | `propose` refuses blocked companies |
+| Only the Represented and Fellows are proposed | `propose` checks standing; `vet` applies the admission thresholds (no dimension below 3, mean 3.4+) |
+| The 1+1 rate card | `open-search` computes both installments (OTE/12 each, €20k minimum total); `advance --to placed` sets due dates (start date, +6 months, month-end clamped); `advance --to failed` applies the waiver rules: waived on resignation/cause, still due on client-side events; `invoice` refuses waived installments, validates the installment number, and requires placement first |
+| Searches move forward only | `advance` enforces the state machine (signed to shortlist to offer to placed to failed; lost only pre-placement): no failing an unplaced search, no re-placing, no invoicing from limbo |
+| "Approved the exact text" is literal | dossier-text approval binds a hash of the rendered dossier; if the record changes afterwards, generation refuses until the engineer re-approves |
+| Org score travels with every search | `open-search` requires the company to be scored first and freezes the score at signing |
+| Benchmark never deanonymizes | `benchmark` separates currencies, suppresses every cell below n=5 without even naming it, emits rounded p25-p75 bands instead of raw min/max, and labels verified vs self-reported |
+| Right to erasure | `erase --confirm` deletes the record, scrubs every search's shortlist and log references, and deletes generated dossier files (whose names are hashed, never name-derived) |
+
+## A day in the life
+
+```bash
+# After a vetting coffee: capture the engineer + the comp instrument in one line each
+node scripts/kingmaker.mjs add-engineer --name "..." --role-band "Senior Sales Engineer" --segment "Enterprise SaaS" --market "Northern Europe" --comp-floor 150000
+node scripts/kingmaker.mjs vet --engineer <id> --scores 4,5,4,3,4 --base 105000 --ote 150000 --ratio 1:3 --reference "AE name, the Vestas deal" --verified
+
+# A company wants to hire: score the org first, then sign
+node scripts/kingmaker.mjs score-org --company "n8n" --scores 8,7,6,9,8,7,8,9,7,8
+node scripts/kingmaker.mjs open-search --company <id> --role "Senior SE" --ote 145000 --track inventory
+
+# The search: propose, get consents, generate the dossier, place
+node scripts/kingmaker.mjs propose --search <sid> --engineer <eid>
+node scripts/kingmaker.mjs approve --search <sid> --engineer <eid> --dossier-text-approved
+node scripts/kingmaker.mjs dossier --search <sid> --engineer <eid>      # writes ops/register/out/dossier-*.html
+node scripts/kingmaker.mjs advance --search <sid> --to placed --start-date 2026-11-01
+
+# Money and truth
+node scripts/kingmaker.mjs installments    # what is due, upcoming, waived + survival rate
+node scripts/kingmaker.mjs pipeline        # the whole house on one screen
+node scripts/kingmaker.mjs benchmark       # the data moat, k-suppressed
+```
+
+## Tests
+
+```bash
+node scripts/kingmaker.test.mjs
+```
+
+48 assertions across vetting thresholds, intake-status whitelisting, org bands, fee math and its boundary, input validation, charter enforcement with normalized blocklists, double opt-in, text-hash approvals, standing-conditioned k-anonymity, the search state machine, month-end installment dates, waiver rules, benchmark banding and suppression, GDPR erasure residue, and id validation. Hardened against a 3-lens adversarial review (correctness, privacy red-team, test adequacy). Wired into `GATES.md` as gate G17.
+
+## Boundaries, stated honestly
+
+- This directory starts empty. The engine ships with zero fabricated data; it fills up one real conversation at a time.
+- The public site's intake stays email on purpose: the artifact platform's database capability makes a page organization-internal, which would lock out the very candidates and clients the site exists to reach. Email in, engine behind — that is the concierge model the strategy chose.
+- The `out/` directory holds generated dossiers and benchmarks; treat it as confidential output, and clear it when files are no longer needed.
+- When volume outgrows files (hundreds of engineers, multiple operators), the migration path is the same data model into Airtable or a small backend; the commands are the spec.
+</script>
+<script src="marked.min.js"></script>
+<script>
+  var src = document.getElementById("src").textContent;
+  document.getElementById("md").innerHTML = marked.parse(src, { mangle: false, headerIds: false });
+</script>
+</html>

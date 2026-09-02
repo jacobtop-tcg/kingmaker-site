@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<title>The Vetting Rubric</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,300..800&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Spline+Sans+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --ink: #171c30; --muted: #565f7d; --faint: #8a92ad;
+    --line: #dcdfeb; --cobalt: #2447e0; --gold: #b57b12; --gold-soft: rgba(181,123,18,0.1);
+    --display: "Bricolage Grotesque", "Avenir Next", "Helvetica Neue", sans-serif;
+    --body: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --mono: "Spline Sans Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg:#0a0e1e; --surface:#121732; --ink:#e8ecfa; --muted:#9aa5c9; --faint:#66719a; --line:#262e52; --cobalt:#6d87ff; --gold:#f0b03f; --gold-soft:rgba(240,176,63,0.1); }
+  }
+  :root[data-theme="dark"] { --bg:#0a0e1e; --surface:#121732; --ink:#e8ecfa; --muted:#9aa5c9; --faint:#66719a; --line:#262e52; --cobalt:#6d87ff; --gold:#f0b03f; --gold-soft:rgba(240,176,63,0.1); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.68; -webkit-font-smoothing:antialiased; }
+  .page { max-width:860px; margin:0 auto; padding:clamp(28px,5vw,64px) clamp(18px,4vw,40px) 80px; }
+  .masthead { display:flex; align-items:center; gap:12px; margin-bottom:30px; }
+  .masthead .brand { font-family:var(--display); font-weight:700; letter-spacing:0.18em; text-transform:uppercase; font-size:0.9rem; }
+  .masthead .doc { margin-left:auto; font-family:var(--mono); font-size:0.64rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--faint); text-align:right; }
+  .masthead a { color:inherit; text-decoration:none; }
+  #md h1 { font-family:var(--display); font-size:clamp(1.7rem,4vw,2.4rem); font-weight:680; line-height:1.12; margin:10px 0 14px; letter-spacing:-0.01em; }
+  #md h2 { font-family:var(--display); font-size:1.35rem; font-weight:660; margin:40px 0 10px; }
+  #md h3 { font-size:1.02rem; font-weight:700; margin:26px 0 8px; }
+  #md p { color:var(--muted); max-width:72ch; margin:10px 0; }
+  #md strong { color:var(--ink); }
+  #md a { color:var(--cobalt); }
+  #md ul, #md ol { margin:10px 0 10px 1.3em; color:var(--muted); max-width:70ch; }
+  #md li { margin:5px 0; }
+  #md blockquote { border-left:3px solid var(--gold); background:var(--gold-soft); padding:12px 18px; margin:14px 0; }
+  #md blockquote p { color:var(--ink); }
+  #md code { font-family:var(--mono); font-size:0.85em; background:var(--surface); border:1px solid var(--line); padding:1px 5px; }
+  #md pre { background:var(--surface); border:1px solid var(--line); padding:14px 18px; overflow-x:auto; margin:14px 0; }
+  #md pre code { border:none; padding:0; }
+  #md table { border-collapse:collapse; margin:14px 0; font-size:0.86rem; width:100%; display:block; overflow-x:auto; }
+  #md th { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--faint); text-align:left; padding:8px 12px; border-bottom:1px solid var(--line); white-space:nowrap; }
+  #md td { padding:9px 12px; border-bottom:1px solid var(--line); color:var(--muted); vertical-align:top; }
+  #md hr { border:none; border-top:1px solid var(--line); margin:34px 0; }
+  footer { margin-top:56px; padding-top:16px; border-top:1px solid var(--line); font-family:var(--mono); font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--faint); }
+</style>
+<div class="page">
+  <div class="masthead"><svg width="24" height="20" viewBox="0 0 28 24" fill="none" aria-hidden="true"><path d="M2 21 L2 7 L9 13 L14 2 L19 13 L26 7 L26 21 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" style="color: var(--gold);"/></svg><a class="brand" href="index.html">Kingmaker</a><span class="doc"><a href="index.html">Partner pack</a><br>Working document</span></div>
+  <div id="md"><noscript><p>Enable JavaScript to render this document.</p></noscript></div>
+  <footer>Shared for collaboration between the founders. Not for redistribution.</footer>
+</div>
+<script type="text/markdown" id="src"># The Kingmaker Vetting Rubric & Register Standard
+
+**Document owner:** Founder
+**Version:** 1.0 — August 2026
+**Status:** Operational. This is the working instrument for every vetting interview, jury session, and employer-side engagement. Changes require a version bump and a note in the change log at the end.
+
+**Purpose.** Kingmaker admits nobody it has not tested. This document defines what we test, how we score it, what evidence we require at each tier, and the rules that keep the register honest. If a decision is not covered here, the default is: do not admit, do not publish, do not promise.
+
+---
+
+## 1. The Five-Dimension Rubric
+
+Every engineer on the Register is scored on five dimensions. Scores are 1–5, whole numbers only. A score of 4 or 5 must be supported by a quoted example from the interview or reference — no quote, no score. Assessors score independently within 24 hours of the interview, before any discussion.
+
+**Admission thresholds (Represented):** no dimension below 3; mean of 3.4 or above.
+**Fellow consideration:** mean of 4.2 or above from the interview, then jury-scored Showcase (see Section 3).
+
+Dimensions are equally weighted. We do not average away a weakness: a 2 anywhere is a decline regardless of the mean.
+
+### 1.1 Discovery
+
+**Definition.** The ability to understand a customer's technical and business situation before proposing anything — and to keep discovering after the deal is "qualified".
+
+**Observable behaviours:** asks questions before presenting; follows the answer, not the script; identifies stakeholders beyond the initial contact; surfaces constraints (security, procurement, architecture, politics) the customer had not volunteered; changes the demo plan when discovery contradicts it.
+
+| Score | Anchor |
+|---|---|
+| 1 | Pitches immediately. Questions, where they exist, are qualification box-ticking (budget, timeline). Cannot describe a customer's environment from a past deal without describing their own product. |
+| 2 | Runs a scripted discovery list but does not follow up on answers. Discovery ends when the demo is booked. Retells past deals from the product's point of view, not the customer's. |
+| 3 | Competent structured discovery: uncovers the stated need, maps it to capability, tailors the demo accordingly. Can name the customer's stakeholders and what each cared about. This is a solid working SE. |
+| 4 | Uncovers something the customer did not volunteer — a second decision-maker, an unstated technical constraint, a competing internal project — and adjusts the pursuit mid-flight. Can quote the question that unlocked it. |
+| 5 | Reframes the problem. The customer leaves discovery understanding their own environment better than they did going in. Quantifies the cost of the status quo in the customer's numbers, not vendor numbers. Rare; perhaps one in twenty interviews. |
+
+### 1.2 Technical Credibility
+
+**Definition.** Depth sufficient to earn the trust of the customer's engineers — and the honesty to say "I don't know, I'll find out" rather than bluff.
+
+**Observable behaviours:** explains their product's architecture without slides; goes at least two "why" levels deep on any claim; handles a hostile architect calmly; distinguishes what they built, what they configured, and what they only demoed; admits gaps without losing the room.
+
+| Score | Anchor |
+|---|---|
+| 1 | Recites feature names. Two "why" questions in, the answers become circular or marketing language. Cannot draw the architecture of a product they sold for a year. |
+| 2 | Knows the happy path deeply, nothing off it. Bluffs under pressure rather than deferring — the disqualifying behaviour, because a customer architect spots it in minutes. |
+| 3 | Genuinely fluent in their product and its immediate integration surface. Can whiteboard the architecture, explain trade-offs, and take a hard question to a credible "here's how I'd verify that". |
+| 4 | Fluent one layer below the product: the databases, protocols, cloud primitives, or domain standards it sits on. Has personally built or broken things in a POC and can tell you exactly what failed and why. |
+| 5 | Customer engineers seek their opinion on matters beyond the vendor's product. Has a defensible technical point of view on the category itself. Reference calls confirm engineers asked for them by name. |
+
+### 1.3 Storytelling & Communication
+
+**Definition.** The ability to make a technical capability mean something — to translate between the CFO, the architect, and the admin in the same meeting without condescending to any of them.
+
+**Observable behaviours:** structures answers (situation, complication, resolution) without being prompted; adjusts altitude to the listener; demos features as outcomes ("which means…"); silence used deliberately; answers the question that was asked, at the length it deserved.
+
+| Score | Anchor |
+|---|---|
+| 1 | Feature tours. Monologues past the point the listener stopped following. In this interview, answers to 30-second questions run five minutes. |
+| 2 | Clear one-to-one, but one register only — either too technical for executives or too shallow for engineers. Stories lack a customer; the product is the protagonist. |
+| 3 | Clear, structured, appropriately pitched. Can tell one genuinely good customer story with tension and resolution. Demos land as "so what this means for you is…". |
+| 4 | Reads the room and shifts altitude mid-answer. Uses the customer's own vocabulary back to them. In the interview, you notice you have stopped taking notes because you are listening. |
+| 5 | The demo becomes the deal's shared narrative — champions repeat this SE's framing internally, verbatim. Reference explicitly recalls language the SE coined. Teaches others to do it. |
+
+### 1.4 Objection Handling
+
+**Definition.** Composure and honesty when the deal pushes back — technical objections, competitive traps, and the objection behind the objection.
+
+**Observable behaviours:** pauses and clarifies before answering; distinguishes real blockers from negotiating theatre; concedes true weaknesses and repositions rather than denying; handles "your competitor does X" without rubbishing the competitor; keeps the AE informed rather than absorbing risk silently.
+
+| Score | Anchor |
+|---|---|
+| 1 | Argues or capitulates. Treats every objection at face value. When pushed in this interview, becomes defensive or agrees with everything. |
+| 2 | Has rehearsed answers to the top ten objections and is lost off that list. Denies real product weaknesses, which costs credibility exactly when it matters. |
+| 3 | Clarifies before answering, answers honestly, knows the genuine weaknesses of their product and has a practised, truthful way to reposition each. Escalates what they cannot resolve. |
+| 4 | Diagnoses the objection behind the objection — hears "security concerns" and finds the stalled champion or the rival internal project. Can name a deal where conceding a weakness won trust that won the deal. |
+| 5 | Turns objection moments into the reason the customer buys. Reference call independently cites a moment the deal was dying and this SE's handling of a hostile room saved it. |
+
+### 1.5 Commercial Awareness
+
+**Definition.** Understanding that the SE's job is the technical win inside a commercial campaign — not technical activity for its own sake.
+
+**Observable behaviours:** knows their numbers (attainment, ACV, win rate, POC-to-close conversion) without looking them up; scopes POCs with exit criteria and an end date; can articulate deal strategy, not just demo strategy; pushes back on unqualified technical work; understands pricing and procurement mechanics well enough to advise the AE.
+
+| Score | Anchor |
+|---|---|
+| 1 | Cannot state their own attainment or average deal size. Views commercial questions as "the AE's job". Ran POCs with no exit criteria and cannot see why that matters. |
+| 2 | Knows the numbers when asked but does not use them. Does what the AE asks, including unqualified demos, without challenge. |
+| 3 | Fluent in their own metrics and territory maths. Scopes every POC against success criteria agreed in writing. Can explain why a specific deal was won or lost in commercial, not just technical, terms. |
+| 4 | Operates as deal co-strategist: has killed bad POCs, re-sequenced evaluations to compress cycles, and can show the revenue effect. Understands their company's margin and packaging logic. |
+| 5 | Thinks like a builder of the business: influences product, pricing, or sales methodology based on field evidence, and can show the artefact (the enablement doc, the packaging change, the play that got adopted). |
+
+---
+
+## 2. The Tiered Evidence Standard
+
+We ask for the minimum evidence that makes the register trustworthy, and nothing that makes joining feel like an audit. Evidence requirements escalate only when the escalation benefits the member.
+
+| Tier of evidence | What it is | When required | Who it benefits |
+|---|---|---|---|
+| **Reputation** | Peer nomination from someone already on the Register, or founder-sourced with two independent vouches | At admission, always | The register (quality floor) |
+| **Reference** | One structured call with an AE or customer about **one specific technical win** (see 2.1) | At admission, always | The register |
+| **Interview** | The structured 60-minute vetting interview (Section 4), scored on the rubric | At admission, always | Both — it also produces the member's dossier language |
+| **Comp verification** | Payslip or offer letter confirming base/OTE | **Never at admission.** Requested only for: (a) offer-negotiation support, (b) verified participation in the Compensation Snapshot | The member only |
+| **Showcase** | Recorded demo scored by jury (Section 3) | Optional, Fellow track only | The engineer only |
+
+Self-reported compensation is captured in every interview (Section 4.6) and marked *self-reported* in the dataset. Verified figures are marked *verified*. We never make verification a condition of membership, an introduction, or continued good standing.
+
+### 2.1 The reference call: "one specific technical win"
+
+The reference must be about **a named deal** (company can be anonymised to sector and size), not a character reference. Fifteen minutes, three questions, taken verbatim in notes:
+
+1. "Walk me through a deal where [name] made the technical difference. What was the moment?"
+2. "What did the customer's technical team make of them? Anything specific they said or did?"
+3. "Where did you have to cover for them, or wish they were stronger?"
+
+A reference who cannot get past adjectives ("great guy, very technical") after one redirect is recorded as **non-specific** and a second reference is requested before admission. We are buying evidence, not enthusiasm.
+
+---
+
+## 3. Represented and Fellow
+
+| | **Represented** | **Fellow** |
+|---|---|---|
+| Bar | Rubric thresholds met (Section 1) | Top decile of the register |
+| Route | Nomination + reference + interview | Represented first, then jury-scored Showcase |
+| Showcase | Not required | Required for the tier — but the tier itself is **optional**. Framed and communicated as an award, never an audition |
+| Recording ownership | — | The candidate. Kingmaker holds a copy under licence; the engineer can withdraw it at any time, which lapses the Fellow badge but not membership |
+| Release of recording | — | **Per-introduction only**, with the engineer's explicit consent each time. Never in a searchable library, never to an employer who has not signed the NDA |
+| What employers see | Dossier (k-anonymous until double opt-in) | Dossier + "Kingmaker Fellow" designation + Showcase on request per the rules above |
+| Cost to candidate | Free forever | Free forever |
+
+### 3.1 The Showcase and jury
+
+- **Format:** a 20-minute recorded demo of a product of the engineer's choosing to a scenario brief Kingmaker issues, plus 10 minutes of live objection Q&A from the jury.
+- **Jury:** three scorers minimum — one Kingmaker assessor, two Fellows or invited SE leaders. Scored independently on the five dimensions before discussion; the written consensus note is shared with the candidate whether or not Fellow is awarded.
+- **Outcome language:** "awarded" or "not awarded this cycle". An engineer not awarded may re-sit after six months. Nothing about a non-award is ever recorded outside the member's own file, and never disclosed to employers.
+- **Cadence:** jury sessions run monthly once there are five or more candidates queued; ad hoc before that.
+
+---
+
+## 4. The Structured 60-Minute Vetting Interview
+
+One interviewer, video on, recorded only with consent (recording is for scoring calibration, deleted after 90 days, never shared). Score sheet open throughout; scores finalised within 24 hours.
+
+| Time | Segment | Feeds |
+|---|---|---|
+| 0–5 | Framing and consent | — |
+| 5–13 | Career walkthrough | Baseline, segment/tooling context |
+| 13–30 | Deep dive: one technical win | Discovery, Technical Credibility |
+| 30–40 | Live scenario: objection pressure | Objection Handling, Storytelling |
+| 40–48 | Commercial questions | Commercial Awareness |
+| 48–56 | Compensation and team-shape capture | The dataset |
+| 56–60 | Charter, tiers, next steps | — |
+
+**4.1 Framing (0–5).** State plainly: representation is free forever; this conversation is scored; compensation questions come at the end and answering them is voluntary; their data is never shown to an employer in identifiable form without their consent per introduction. Ask consent to record.
+
+**4.2 Career walkthrough (5–13).** "Two minutes per role, most recent first: what you sold, to whom, and the one deal you'd want judged on." Note segment, product category, and demo/POC tooling as they go — it shortens Section 4.6.
+
+**4.3 Deep dive (13–30).** Take the deal they want to be judged on. Drive with: "What did you know about their environment before the first call, and how?" — "What did you find that they didn't tell you?" — "Draw me the architecture as if I'm their platform lead." — "What broke in the POC?" — "What would their lead engineer say about you, verbatim?" Two "why" levels minimum on every technical claim.
+
+**4.4 Live scenario (30–40).** Interviewer plays a sceptical Head of Engineering in the candidate's own current product context: "We ran your competitor's POC last quarter and it went fine. Why am I in this meeting?" Escalate once with a true weakness of their product (ask them earlier what it is, then use it). Scoring what happens next — the pause, the clarifying question, the honest concession — is the point of the exercise.
+
+**4.5 Commercial questions (40–48).** "Attainment last full year, and the year before?" — "Average deal size, and your POC-to-close rate?" — "Tell me about a POC you killed, or should have." — "What does your product cost, roughly, and how is it packaged — and what would you change?"
+
+### 4.6 Compensation and team-shape capture instrument (48–56)
+
+Asked in this exact order, every interview, verbatim. Preface: "Eight quick questions for the dataset. Answers are self-reported unless you later choose to verify, aggregated only, and never shown to an employer against your name."
+
+| # | Question (verbatim) | Field | Format |
+|---|---|---|---|
+| 1 | "What is your current annual base salary, and in which currency?" | `base_salary`, `currency` | Number + ISO currency |
+| 2 | "What is your on-target earnings figure — base plus variable at 100% — and what is the split?" | `ote`, `split` | Number + ratio (e.g. 70/30) |
+| 3 | "Last full year, what did you actually earn against that OTE?" | `attainment_earnings` | Number or % of OTE |
+| 4 | "Do you hold equity — options or RSUs — and roughly what is the unvested value at the current or last preferred price?" | `equity_type`, `equity_value` | Type + number; "declined" accepted without comment |
+| 5 | "What is the AE-to-SE ratio on your team as actually staffed, not on paper?" | `ae_se_ratio` | Ratio (e.g. 3:1) |
+| 6 | "Which segment do you primarily serve — SMB, mid-market, or enterprise — and which territory?" | `segment`, `territory` | Enum + free text |
+| 7 | "What is your demo and POC tooling stack — demo environment, sandbox infra, anything you'd call your workbench?" | `tooling` | Free text, tagged later |
+| 8 | "Would you take part in the verified Compensation Snapshot — payslip-checked, and you get the full benchmark report before anyone else?" | `verify_opt_in` | Y/N |
+
+Any question may be declined; record `declined`, move on, no persuasion. A declined answer has no bearing on admission.
+
+**4.7 Close (56–60).** Explain Represented and Fellow, the Charter, the named-agent model, and the honest timeline: decision within five working days; if admitted, first relevant approach only when a search clears their stated bar.
+
+---
+
+## 5. The Employer-Side Product: the Rubric as a Service
+
+The same instrument that gates the register is sold to employers as **the Kingmaker SE Interview Standard**. One rubric, two markets — the register proves it works; the employer product monetises it and feeds calibration data back.
+
+| Component | What the employer gets | Delivery |
+|---|---|---|
+| **Interview kit** | The five-dimension rubric with anchors, the 60-minute interview guide adapted to their product context, question bank mapped to dimensions, printable score sheets | Document pack + 90-minute working session to localise it |
+| **Panel calibration** | A 2-hour session where their panel scores two sample interviews (with consent, anonymised) against Kingmaker scoring; drift is measured and corrected | Live workshop |
+| **Panel-scoring service** | A Kingmaker assessor joins final-round SE interviews (or scores recordings) and issues an independent five-dimension score with written evidence | Per-interview fee; bundled free into retained searches |
+| **SE-Org Health Check** | The scored diagnostic (separate instrument) — required context for any panel-scoring engagement, because a rubric cannot fix a broken org | Existing product |
+
+**Hard separations, non-negotiable:**
+
+- Rubric scores, interview notes, and Showcase materials are never inputs to any employer engagement. The employer buys the *method*, never the register's data.
+- A Kingmaker assessor who scored an engineer's admission interview does not score that engineer in an employer's panel; another assessor is assigned.
+- Panel-scoring reports state plainly that Kingmaker scores are advisory; the hiring decision is the employer's.
+
+**Why sell it at all:** every employer running our rubric raises the market's definition of a good SE interview towards our standard, produces calibration data across companies, and meets the register at its most persuasive — mid-hire, mid-struggle.
+
+---
+
+## 6. Integrity Rules
+
+These are the rules that make the stamp worth something. Breaching them is a fire-the-founder offence.
+
+1. **Never publish rejections.** A declined candidate is told privately, with the dimension-level reason and what evidence would reopen the file. No list, no leak, no "we turned down X% including people from [company]" anecdotes — internally or externally. Nominations are confidential in both directions: nominees are not told who declined to vouch, and nominators are not told outcomes without the candidate's consent.
+2. **No acceptance-rate marketing until the applicant pool exceeds 300.** Below that, any percentage is noise dressed as selectivity. Until then, the only public claim about the bar is the rubric itself.
+3. **Jury conflicts.** A juror must recuse where any of the following holds: same employer as the candidate now or within 24 months; a current or former direct reporting line either way; any financial interest in the candidate's placement; a personal relationship. Recusals are recorded. Minimum three scorers stands after recusals or the session is rescheduled.
+4. **Scores are internal.** Employers never see numeric rubric scores for our engineers — they see dossier language. Numbers create false precision across contexts; sentences carry evidence.
+5. **Comp data discipline.** Aggregates published only at k-anonymity thresholds; the Snapshot ships at n≈100 clearly labelled as a snapshot; the word "benchmark" is not used publicly until n≥400 verified-or-self-reported with the mix disclosed.
+6. **No retroactive bar-lowering.** If a search is hard, the answer is a longer search or a declined search — never an admitted candidate who did not clear Section 1.
+7. **Annual re-anchor.** Each August, assessors and two Fellows re-score three anonymised interviews from the archive. If scores drift more than 0.5 on any dimension, anchors are rewritten before the next admission.
+
+---
+
+## Change log
+
+| Version | Date | Change |
+|---|---|---|
+| 1.0 | Aug 2026 | Initial standard |
+</script>
+<script src="marked.min.js"></script>
+<script>
+  var src = document.getElementById("src").textContent;
+  document.getElementById("md").innerHTML = marked.parse(src, { mangle: false, headerIds: false });
+</script>
+</html>
